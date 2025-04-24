@@ -70,3 +70,53 @@ sources:
       simulation_id: ngc4008
       time_start: 2020-01-01T00:00:00
       time_end: 2050-01-01T00:00:00
+  icon_d3hp003:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: /work/bm1235/k202186/dy3ha-rechunked/d3hp003.zarr/{{ time }}_{{ method }}_z{{ zoom }}_atm
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+        - PT1H
+        - PT3H
+        - PT6H
+        - P1D
+        - CONST
+        default: P1D
+        description: time resolution of the dataset
+        type: str
+      method:
+        allowed:
+        - inst
+        - mean
+        default: mean
+        description: time subsetting method
+        type: str
+      zoom:
+        allowed:
+        - 10
+        - 9
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        - 0
+        default: 0
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      project: nextGEMS
+      experiment_id: nextgems_prefinal
+      source_id: ICON-ESM
+      simulation_id: d3hp003
+      time_start: 2020-01-01T00:00:00
+      time_end: 2021-03-01T00:00:00
+
+
+
