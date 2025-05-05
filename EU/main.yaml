@@ -39,7 +39,7 @@ sources:
       time_start: 2020-01-01T00:00:00
       time_end: 2050-01-01T00:00:00
       title: ICON nextGEMS Cycle 4 simulation
-      summary: "Coupled atmosphere-ocean simulation at 5km resolution in the ocean and 10km in the atmosphere. Run for 30 years starting in 2020. Ocean data is available at healpix levels 0-10, atmosphere data at levels 0-9."
+      summary: "Coupled atmosphere-ocean simulation at 5km resolution in the ocean and 10km in the atmosphere. Run for 30 years starting in 2020. Fields were remapped to Healpix level 10 using nearest-neighbor interpolation. Lower levels were generated from this using conservative aggregation. Ocean data is available at healpix levels 0-10, atmosphere data at levels 0-9. PT15M contains selected 2D fields, PT3H adds atmospheric 3D fields and more 2D fields of atmosphere and ocean, P1D adds ocean 3D fields."
       references: https://easy.gems.dkrz.de/DYAMOND/NextGEMS/prefinal.html#icon
       license: unknown
       creator_name: Karl-Hermann Wieners
@@ -90,3 +90,11 @@ sources:
       simulation_id: d3hp003
       time_start: 2020-01-01T00:00:00
       time_end: 2021-03-01T00:00:00
+      title: ICON 2.5 km simulation
+      summary: "Atmosphere-only simulation at 2.5 km resolution. Run for 1 year and 2 months starting in 2020. 3D data is generated on pressure levels as instantaneous values (mostly starting at 6-hourly (PT6H)). Means are calculated from the instantaneous values. 2D field means are calculated from the timestep level values. Fields were remapped to Healpix level 12 using nearest-neighbor interpolation. Lower levels were generated from this using conservative aggregation. Level 12 data was (mostly) deleted due to space constraints."
+      references: https://www.icon-model.org/
+      license: unknown
+      creator_name: Karl-Hermann Wieners, Marco Giorgietta, Siddhant Tibrewal
+      creator_email: karl-hermann.wieners@mpimet.mpg.de, marco.giorgetta@mpimet.mpg.de, siddhant.tibrewal@mpimet.mpg.de
+      source: ICON Model
+      institution: Max Planck Institute for Meteorology
