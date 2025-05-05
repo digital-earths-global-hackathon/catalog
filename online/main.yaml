@@ -95,11 +95,7 @@ sources:
         default: 0
         description: zoom resolution of the dataset
         type: int
-    metadata:
-      source_id: ICON-ESM
-      simulation_id: d3hp003
-      time_start: 2020-01-01T00:00:00
-      time_end: 2021-03-01T00:00:00
+    # metadata: (see EU catalog)
   ifs_tco3999-ng5_rcbmf:
     args:
       chunks: auto
