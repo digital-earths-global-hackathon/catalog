@@ -40,7 +40,7 @@ sources:
       time_end: 2050-01-01T00:00:00
       title: ICON nextGEMS Cycle 4 simulation
       summary: "Coupled atmosphere-ocean simulation at 5km resolution in the ocean and 10km in the atmosphere. Run for 30 years starting in 2020. Ocean data is available at healpix levels 0-10, atmosphere data at levels 0-9."
-      references: https://easy.gems.dkrz.de/DYAMOND/NextGEMS/prefinal.html
+      references: https://easy.gems.dkrz.de/DYAMOND/NextGEMS/prefinal.html#icon
       license: unknown
       creator_name: Karl-Hermann Wieners
       creator_email: karl-hermann.wieners@mpimet.mpg.de
