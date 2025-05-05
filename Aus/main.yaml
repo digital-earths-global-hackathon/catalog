@@ -1,0 +1,89 @@
+sources:
+  um_glm_n2560_RAL3:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: /g/data/qx55/uk_node/glm.n2560_RAL3p3/data.healpix.{{ time }}.z{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+        - PT1H
+        - PT3H
+        default: PT1H
+        description: time resolution
+        type: str
+      zoom:
+        allowed:
+        - 10
+        - 9
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        default: 4
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      project: global_hackathon
+      experiment_id: dyamond3
+      source_id: Unified_Model
+      simulation_id: N2560_RAL3
+      region: glm
+      resolution: 5km
+      configuration: RAL3
+      time_start: 2020-01-20T00:00:00
+      time_end: 2021-04-01T00:00:00
+  icon_d3hp003:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: /g/data/qx55/germany_node/d3hp003.zarr/{{ time }}_{{ method }}_z{{ zoom }}_atm.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+        - P1D
+        - PT6H
+        - PT3H
+        default: P1D
+        description: time resolution
+        type: str
+      method:
+        allowed:
+          - mean
+          - point
+        default: inst
+        description: time subsetting method
+        type: str
+      zoom:
+        allowed:
+        - 11
+        - 10
+        - 9
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        - 0
+        default: 4
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      project: global_hackathon
+      experiment_id: dyamond3
+      source_id: ICON-ESM
+      simulation_id: d3hp003
+      region: glm
+      resolution: 2.5km
+      time_start: 2020-01-02T00:00:00
+      time_end: 2021-03-01T00:00:00
+  
