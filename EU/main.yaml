@@ -39,7 +39,14 @@ sources:
       time_start: 2020-01-01T00:00:00
       time_end: 2050-01-01T00:00:00
       title: ICON nextGEMS Cycle 4 simulation
-      summary: "Coupled atmosphere-ocean simulation at 5km resolution in the ocean and 10km in the atmosphere. Run for 30 years starting in 2020. Fields were remapped to Healpix level 10 using nearest-neighbor interpolation. Lower levels were generated from this using conservative aggregation. Ocean data is available at healpix levels 0-10, atmosphere data at levels 0-9. PT15M contains selected 2D fields, PT3H adds atmospheric 3D fields and more 2D fields of atmosphere and ocean, P1D adds ocean 3D fields."
+      summary: "Coupled atmosphere-ocean simulation at 5km resolution in the ocean and 10km in the atmosphere. Run for 30 years starting in 2020.
+
+      * Processing:
+        * Fields were remapped to Healpix level 10 using nearest-neighbor interpolation. 
+        * Lower levels were generated from this using conservative aggregation. 
+      * Resolutions:
+        * Ocean data is available at healpix levels 0-10, atmosphere data at levels 0-9. 
+        * PT15M contains selected 2D fields, PT3H adds atmospheric 3D fields and more 2D fields of atmosphere and ocean, P1D adds ocean 3D fields."
       references: https://easy.gems.dkrz.de/DYAMOND/NextGEMS/prefinal.html#icon
       license: unknown
       creator_name: Karl-Hermann Wieners
