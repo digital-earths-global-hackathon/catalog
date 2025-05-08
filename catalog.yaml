@@ -24,4 +24,8 @@ sources:
     driver: yaml_file_cat
     args:
         path: "{{CATALOG_DIR}}/UK/main.yaml"
-
+  TOKYO:
+    description: online data sources
+    driver: yaml_file_cat
+    args:
+        path: "{{CATALOG_DIR}}/TOKYO/main.yaml"
