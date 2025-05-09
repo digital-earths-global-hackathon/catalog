@@ -265,7 +265,7 @@ sources:
       citation: Rackow, T., Pedruzo-Bagazgoitia, X., Becker, T., Milinski, S., Sandu, I., Aguridan, R., Bechtold, P., Beyer, S., Bidlot, J., Boussetta, S., Deconinck, W., Diamantakis, M., Dueben, P., Dutra, E., Forbes, R., Ghosh, R., Goessling, H. F., Hadade, I., Hegewald, J., Jung, T., Keeley, S., Kluft, L., Koldunov, N., Koldunov, A., Kölling, T., Kousal, J., Kühnlein, C., Maciel, P., Mogensen, K., Quintino, T., Polichtchouk, I., Reuter, B., Sármány, D., Scholz, P., Sidorenko, D., Streffing, J., Sützl, B., Takasuka, D., Tietsche, S., Valentini, M., Vannière, B., Wedi, N., Zampieri, L., and Ziemen, F. - Multi-year simulations at kilometre scale with the Integrated Forecasting System coupled to FESOM2.5 and NEMOv3.4, Geosci. Model Dev., 18, 33–69, https://doi.org/10.5194/gmd-18-33-2025, 2025.
   um_glm_n1280_GAL9:
     args:
-      chunks: null
+      chunks: auto
       consolidated: true
       urlpath: https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/dev/v5/glm.n1280_GAL9_nest/um.{{ time }}.hp_z{{ zoom }}.zarr
     driver: zarr
@@ -295,7 +295,7 @@ sources:
     # metadata is in the UK catalog
   um_CTC_km4p4_RAL3P3_n1280_GAL9_nest:
     args:
-      chunks: null
+      chunks: auto
       consolidated: true
       urlpath: https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/dev/v5/CTC_km4p4_RAL3P3.n1280_GAL9_nest/um.{{ time }}.hp_z{{ zoom }}.zarr
     driver: zarr
@@ -326,7 +326,7 @@ sources:
     # metadata is in the UK catalog
   um_SAmer_km4p4_RAL3P3_n1280_GAL9_nest:
     args:
-      chunks: null
+      chunks: auto
       consolidated: true
       urlpath: https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/dev/v5/SAmer_km4p4_RAL3P3.n1280_GAL9_nest/um.{{ time }}.hp_z{{ zoom }}.zarr
     driver: zarr
@@ -357,7 +357,7 @@ sources:
     # metadata is in the UK catalog
   um_Africa_km4p4_RAL3P3_n1280_GAL9_nest:
     args:
-      chunks: null
+      chunks: auto
       consolidated: true
       urlpath: https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/dev/v5/Africa_km4p4_RAL3P3.n1280_GAL9_nest/um.{{ time }}.hp_z{{ zoom }}.zarr
     driver: zarr
@@ -388,7 +388,7 @@ sources:
     # metadata is in the UK catalog
   um_SEA_km4p4_RAL3P3_n1280_GAL9_nest:
     args:
-      chunks: null
+      chunks: auto
       consolidated: true
       urlpath: https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/dev/v5/SEA_km4p4_RAL3P3.n1280_GAL9_nest/um.{{ time }}.hp_z{{ zoom }}.zarr
     driver: zarr
@@ -419,7 +419,7 @@ sources:
     # metadata is in the UK catalog
   um_glm_n2560_RAL3p3:
     args:
-      chunks: null
+      chunks: auto
       consolidated: true
       urlpath: https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/dev/v5/glm.n2560_RAL3p3/um.{{ time }}.hp_z{{ zoom }}.zarr
     driver: zarr
@@ -450,7 +450,7 @@ sources:
     # metadata is in the UK catalog
   um_glm_n1280_CoMA9_TBv1p2:
     args:
-      chunks: null
+      chunks: auto
       consolidated: true
       urlpath: https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/dev/v5/glm.n1280_CoMA9/um.{{ time }}.hp_z{{ zoom }}.zarr
     driver: zarr
