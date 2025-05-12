@@ -629,7 +629,7 @@ sources:
       chunks: null
       consolidated: true
       urlpath: >
-        {% with time_map = {'PT1H': '1h', 'PT3H': '3h', 'PT6H' : '6h'} ,  dims_map = {'PT1H': '2d', 'PT3H': '2d', 'PT6H' : '3d'}  -%}
+        {% with time_map = {'PT1H': '1h', 'PT3H': '3h', 'PT6H' : '6h', 'BC': 'bc'} ,  dims_map = {'PT1H': '2d', 'PT3H': '2d', 'PT6H' : '3d', 'BC': '2d'}  -%}
         https://nowake.nicam.jp/files/healpix/NICAM_{{ dims_map[time] }}{{ time_map[time] }}_z{{ zoom }}.zarr
         {%- endwith %}
     driver: zarr
