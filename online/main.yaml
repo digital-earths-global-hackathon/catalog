@@ -639,6 +639,7 @@ sources:
         - PT1H
         - PT3H
         - PT6H
+        - BC
         default: PT3H
         description: time resolution of the dataset
         type: str
