@@ -34,3 +34,8 @@ sources:
     driver: yaml_file_cat
     args:
         path: "{{CATALOG_DIR}}/CN/main.yaml"
+  SP:
+    description: IAG/USP SP Node
+    driver: yaml_file_cat
+    args:
+        path: "{{CATALOG_DIR}}/SP/main.yaml"

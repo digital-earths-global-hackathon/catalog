@@ -1,0 +1,122 @@
+sources:
+  IR_IMERG:
+    args:
+      consolidated: true
+    urlpath: /dados/hackathon/IMERG/{{yyyy}}/{{mm}}/*.nc
+    driver: NetCDF
+    parameters:
+      zoom:
+        allowed:
+          - 9
+        default: 9
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      title: NCEP/CPC 4km Global (60N - 60S) IR and GPM IMERG (precipitation) Dataset
+      time_start: 2020-01-01T00:00:00
+      time_end: 2021-04-30T23:00:00
+      creator_name: Paola Bueno, Edson Barbosa
+      creator_email: paola.bueno@iag.usp.br, edson@meteoia.com
+      history: Obtained and processed by Paola Bueno, Edson Barbosa.
+      institution: IAG/USP
+  ERA5:
+    args:
+      consolidated: true
+      urlpath: /dados/hackathon/ERA5/{{level}}/*.nc
+    driver: NetCDF
+    parameters:
+      zoom:
+        allowed:
+          - 7
+        default: 7
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      title: ERA5 reanalysis
+      time_start: 2020-01-01T00:00:00
+      time_end: 2021-04-30T23:00:00
+      creator_name: Paola Bueno, Edson Barbosa
+      creator_email: paola.bueno@iag.usp.br, edson@meteoia.com
+      history: Obtained and processed by Paola Bueno, Edson Barbosa.
+      institution: IAG/USP
+    summary: |  
+       Contains modified Copernicus Climate Change Service information 2020. Neither the European Commission nor ECMWF is responsible for any use that may be made of the Copernicus information or data it contains.
+       
+  ERA5Land:
+    args:
+      consolidated: true
+      urlpath: /dados/hackathon/ERA5Land/*.nc
+    driver: zarr
+    parameters:
+      zoom:
+        allowed:
+          - 7
+        default: 7
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      title: 
+      time_start: 2020-01-01T00:00:00
+      time_end: 2021-04-30T23:00:00
+      creator_name: Paola Bueno, Edson Barbosa
+      creator_email: paola.bueno@iag.usp.br, edson@meteoia.com
+      history: Obtained and processed by Paola Bueno, Edson Barbosa.
+      institution: IAG/USP
+  um_glm_n2560_RAL3p3:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - /dados/hackathon/glm.n2560_RAL3p3/{{zoom}}.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+        - PT1H
+        - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+        - 10
+        - 9
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      project: global_hackathon
+      experiment_id: hackathon
+      experiment_index: 2
+      region: global
+      resolution: 5km
+      configuration: RAL3p3
+      source_id: UM-5km-RAL3-global
+      simulation_id: 5km-RAL3
+      time_start: 2020-01-20T00:00:00
+      time_end: 2021-03-01T00:00
+      title: RAL3.3 5 km simulation
+      summary: |
+        Atmosphere-only simulation at 5 km resolution. Run for 1 year and 2 months starting in 2020.
+
+        **Simulation**:
+          * Source code: Regional Nesting Suite (RNS)
+          * Horizontal grid: 5km resolution global lat-lon grid
+          * Vertical grid: L85_80km - 85 levels, model top at 80km
+          * Initial conditions: From operational model for date 2020-01-20T00:00:00Z
+
+      references: https://doi.org/10.5194/gmd-2024-201
+      license:  Crown Copyright, 2025, Met Office. For Educational Use and Non-Commercial Research Use only.
+      creator_name: Richard W. Jones, Claudio Sanchez, Huw Lewis, Calum Scullion, Dasha Shchepanovska, Mark Muetzelfeldt
+      creator_email: richard.w.jones@metoffice.gov.uk, claudio.sanchez@metoffice.gov.uk, huw.lewis@metoffice.gov.uk, calum.scullion@metoffice.gov.uk, dasha.shchepanovska@metoffice.gov.uk, mark.muetzelfeldt@reading.ac.uk
+      history: Calum Scullion ran this simulation on Atos (ECMWF), Mark Muetzelfeldt converted from UM lat/lon output to healpix (JASMIN)
+      institution: Met Office
