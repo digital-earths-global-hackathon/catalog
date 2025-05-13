@@ -117,7 +117,7 @@ sources:
   ERA5:
     args:
       consolidated: true
-      urlpath: http://server04/dkrz-swift/v1/dkrz_41caca03ec414c2f95f52b23b775134f/reanalysis/v1/ERA5_P1M_{{ zoom }}.zarr
+      urlpath: http://http://server04:2081/dkrz-swift/v1/dkrz_41caca03ec414c2f95f52b23b775134f/reanalysis/v1/ERA5_P1M_{{ zoom }}.zarr
     driver: zarr
     parameters:
       zoom:
@@ -128,7 +128,7 @@ sources:
   JRA3Q:
     args:
       consolidated: true
-      urlpath: http://server04/dkrz-swift/v1/dkrz_41caca03ec414c2f95f52b23b775134f/reanalysis/v1/JRA3Q_P1M_{{ zoom }}.zarr
+      urlpath: http://http://server04:2081/dkrz-swift/v1/dkrz_41caca03ec414c2f95f52b23b775134f/reanalysis/v1/JRA3Q_P1M_{{ zoom }}.zarr
     driver: zarr
     parameters:
       zoom:
@@ -139,7 +139,7 @@ sources:
   MERRA2:
     args:
       consolidated: true
-      urlpath: http://server04/dkrz-swift/v1/dkrz_41caca03ec414c2f95f52b23b775134f/reanalysis/v1/MERRA2_P1M_{{ zoom }}.zarr
+      urlpath: http://http://server04:2081/dkrz-swift/v1/dkrz_41caca03ec414c2f95f52b23b775134f/reanalysis/v1/MERRA2_P1M_{{ zoom }}.zarr
     driver: zarr
     parameters:
       zoom:
@@ -163,7 +163,7 @@ sources:
     args:
       chunks: null
       consolidated: true
-      urlpath: http://server04/dkrz-minio/nextgems/rechunked_ngc4008/ngc4008_{{ time }}_{{ zoom }}.zarr
+      urlpath: http://http://server04:2081/dkrz-minio/nextgems/rechunked_ngc4008/ngc4008_{{ time }}_{{ zoom }}.zarr
     driver: zarr
     parameters:
       time:
@@ -194,7 +194,7 @@ sources:
     args:
       chunks: null
       consolidated: true
-      urlpath: http://server04/dkrz-minio/wrcp-hackathon/data/ICON/d3hp003.zarr/{{ time }}_{{ time_method }}_z{{ zoom }}_atm
+      urlpath: http://http://server04:2081/dkrz-minio/wrcp-hackathon/data/ICON/d3hp003.zarr/{{ time }}_{{ time_method }}_z{{ zoom }}_atm
     driver: zarr
     parameters:
       time:
@@ -236,7 +236,7 @@ sources:
     args:
       chunks: null
       consolidated: true
-      urlpath: http://server04/dkrz-minio/wrcp-hackathon/data/ICON/d3hp003feb.zarr/{{ time }}_{{ time_method }}_z{{ zoom }}_atm
+      urlpath: http://http://server04:2081/dkrz-minio/wrcp-hackathon/data/ICON/d3hp003feb.zarr/{{ time }}_{{ time_method }}_z{{ zoom }}_atm
     driver: zarr
     description: Atmosphere-only simulation at 2.5 km resolution
     parameters:
@@ -298,7 +298,7 @@ sources:
     args:
       chunks: null
       consolidated: true
-      urlpath: http://server04/dkrz-minio/wrcp-hackathon/data/ICON/d3hp003aug.zarr/{{ time }}_{{ time_method }}_z{{ zoom }}_atm
+      urlpath: http://http://server04:2081/dkrz-minio/wrcp-hackathon/data/ICON/d3hp003aug.zarr/{{ time }}_{{ time_method }}_z{{ zoom }}_atm
     driver: zarr
     description: Atmosphere-only simulation at 2.5 km resolution
     parameters:
@@ -362,7 +362,7 @@ sources:
       consolidated: true
       urlpath: >
         {% with time_map = {'PT1H': 'hourly'}, zoom_map = {7: '128', 9: '512', 10: '1024', 11: '2048'} -%}
-        http://server04/dkrz-minio/wrcp-hackathon/data/IFS-FESOM/{{ time_map[time] }}_healpix{{ zoom_map[zoom] }}.zarr
+        http://http://server04:2081/dkrz-minio/wrcp-hackathon/data/IFS-FESOM/{{ time_map[time] }}_healpix{{ zoom_map[zoom] }}.zarr
         {%- endwith %}
     driver: zarr
     parameters:
@@ -776,7 +776,7 @@ sources:
     args:
       chunks: null
       consolidated: true
-      urlpath: http://server04/dkrz-minio/wrcp-hackathon/data/SCREAM/scream_{{ time }}_z{{ zoom }}_v7.zarr
+      urlpath: http://http://server04:2081/dkrz-minio/wrcp-hackathon/data/SCREAM/scream_{{ time }}_z{{ zoom }}_v7.zarr
     driver: zarr
     parameters:
       time:
