@@ -150,7 +150,7 @@ sources:
   IR_IMERG:
     args:
       consolidated: true
-      urlpath: http://localhost:2081/jasmin/obs-data/dev/v1/IR_IMERG_combined/IR_IMERG_combined_V07B.hp_z{{ zoom }}.zarr
+      urlpath: http://server04:2081/jasmin/obs-data/dev/v1/IR_IMERG_combined/IR_IMERG_combined_V07B.hp_z{{ zoom }}.zarr
     driver: zarr
     parameters:
       zoom:
@@ -523,8 +523,8 @@ sources:
       chunks: null
       consolidated: true
       urlpath:
-        - http://localhost:2081/jasmin/sim-data/dev/v5/glm.n1280_GAL9_nest/um.{{ time }}.hp_z{{ zoom }}.zarr
-        - http://localhost:2081/jasmin/sim-data/dev/v5/glm.n1280_GAL9_nest/um.static.hp_z{{ zoom }}.zarr
+        - http://server04:2081/jasmin/sim-data/dev/v5/glm.n1280_GAL9_nest/um.{{ time }}.hp_z{{ zoom }}.zarr
+        - http://server04:2081/jasmin/sim-data/dev/v5/glm.n1280_GAL9_nest/um.static.hp_z{{ zoom }}.zarr
     driver: zarr
     parameters:
       time:
@@ -554,7 +554,7 @@ sources:
     args:
       chunks: null
       consolidated: true
-      urlpath: http://localhost:2081/jasmin/sim-data/dev/v5/CTC_km4p4_RAL3P3.n1280_GAL9_nest/um.{{ time }}.hp_z{{ zoom }}.zarr
+      urlpath: http://server04:2081/jasmin/sim-data/dev/v5/CTC_km4p4_RAL3P3.n1280_GAL9_nest/um.{{ time }}.hp_z{{ zoom }}.zarr
     driver: zarr
     parameters:
       time:
@@ -585,7 +585,7 @@ sources:
     args:
       chunks: null
       consolidated: true
-      urlpath: http://localhost:2081/jasmin/sim-data/dev/v5/SAmer_km4p4_RAL3P3.n1280_GAL9_nest/um.{{ time }}.hp_z{{ zoom }}.zarr
+      urlpath: http://server04:2081/jasmin/sim-data/dev/v5/SAmer_km4p4_RAL3P3.n1280_GAL9_nest/um.{{ time }}.hp_z{{ zoom }}.zarr
     driver: zarr
     parameters:
       time:
@@ -616,7 +616,7 @@ sources:
     args:
       chunks: null
       consolidated: true
-      urlpath: http://localhost:2081/jasmin/sim-data/dev/v5/Africa_km4p4_RAL3P3.n1280_GAL9_nest/um.{{ time }}.hp_z{{ zoom }}.zarr
+      urlpath: http://server04:2081/jasmin/sim-data/dev/v5/Africa_km4p4_RAL3P3.n1280_GAL9_nest/um.{{ time }}.hp_z{{ zoom }}.zarr
     driver: zarr
     parameters:
       time:
@@ -647,7 +647,7 @@ sources:
     args:
       chunks: null
       consolidated: true
-      urlpath: http://localhost:2081/jasmin/sim-data/dev/v5/SEA_km4p4_RAL3P3.n1280_GAL9_nest/um.{{ time }}.hp_z{{ zoom }}.zarr
+      urlpath: http://server04:2081/jasmin/sim-data/dev/v5/SEA_km4p4_RAL3P3.n1280_GAL9_nest/um.{{ time }}.hp_z{{ zoom }}.zarr
     driver: zarr
     parameters:
       time:
@@ -679,8 +679,8 @@ sources:
       chunks: null
       consolidated: true
       urlpath:
-        - http://localhost:2081/jasmin/sim-data/dev/v5/glm.n2560_RAL3p3/um.{{ time }}.hp_z{{ zoom }}.zarr
-        - http://localhost:2081/jasmin/sim-data/dev/v5/glm.n2560_RAL3p3/um.static.hp_z{{ zoom }}.zarr
+        - http://server04:2081/jasmin/sim-data/dev/v5/glm.n2560_RAL3p3/um.{{ time }}.hp_z{{ zoom }}.zarr
+        - http://server04:2081/jasmin/sim-data/dev/v5/glm.n2560_RAL3p3/um.static.hp_z{{ zoom }}.zarr
     driver: zarr
     parameters:
       time:
@@ -712,8 +712,8 @@ sources:
       chunks: null
       consolidated: true
       urlpath:
-        - http://localhost:2081/jasmin/sim-data/dev/v5/glm.n1280_CoMA9/um.{{ time }}.hp_z{{ zoom }}.zarr
-        - http://localhost:2081/jasmin/sim-data/dev/v5/glm.n1280_CoMA9/um.static.hp_z{{ zoom }}.zarr
+        - http://server04:2081/jasmin/sim-data/dev/v5/glm.n1280_CoMA9/um.{{ time }}.hp_z{{ zoom }}.zarr
+        - http://server04:2081/jasmin/sim-data/dev/v5/glm.n1280_CoMA9/um.static.hp_z{{ zoom }}.zarr
     driver: zarr
     parameters:
       time:
