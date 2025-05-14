@@ -23,7 +23,7 @@ sources:
         - 5
         - 4
         - 3
-        default: 4
+        default: 8
         description: zoom resolution of the dataset
         type: int
     metadata:
@@ -55,7 +55,7 @@ sources:
         allowed:
           - mean
           - point
-        default: inst
+        default: mean
         description: time subsetting method
         type: str
       zoom:
@@ -67,7 +67,7 @@ sources:
         - 7
         - 6
         - 5
-        default: 7
+        default: 0
         description: zoom resolution of the dataset
         type: int
     metadata:
