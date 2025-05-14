@@ -23,8 +23,6 @@ sources:
         - 5
         - 4
         - 3
-        - 2
-        - 1
         default: 4
         description: zoom resolution of the dataset
         type: int
@@ -69,12 +67,7 @@ sources:
         - 7
         - 6
         - 5
-        - 4
-        - 3
-        - 2
-        - 1
-        - 0
-        default: 4
+        default: 7
         description: zoom resolution of the dataset
         type: int
     metadata:
