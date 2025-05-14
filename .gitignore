@@ -174,4 +174,5 @@ cython_debug/
 .pypirc
 
 # build output
+/build_outputs_folder
 /output

@@ -38,12 +38,33 @@ sources:
       simulation_id: ngc4008
       time_start: 2020-01-01T00:00:00
       time_end: 2050-01-01T00:00:00
+      title: ICON nextGEMS Cycle 4 simulation
+      summary: |
+        Coupled atmosphere-ocean simulation at 5km resolution in the ocean and 10km in the atmosphere. Run for 30 years starting in 2020.
+    
+        [**Resolutions**](https://swift.dkrz.de/v1/dkrz_b381d76e-63d7-4aeb-96f0-dfd91e102d40/nextgems_prefinal/nextgems_prefinal_output.html)
+          * Ocean data is available at healpix levels 0-10
+          * Atmosphere data at levels 0-9. 
+          * PT15M contains selected 2D fields, 
+          * PT3H adds atmospheric 3D fields and more 2D fields of atmosphere and ocean
+          * P1D adds ocean 3D fields.
+
+        **Processing**
+          * Fields were remapped to HEALPix level 10 using nearest-neighbor interpolation. 
+          * Lower levels were generated from this using conservative aggregation. 
+      references: https://easy.gems.dkrz.de/DYAMOND/NextGEMS/prefinal.html#icon
+      creator_name: Karl-Hermann Wieners
+      creator_email: karl-hermann.wieners@mpimet.mpg.de
+      source: ICON Model
+      institution: Max Planck Institute for Meteorology
+
   icon_d3hp003:
     args:
       chunks: null
       consolidated: true
-      urlpath: /work/bm1235/k202186/dy3ha-rechunked/d3hp003.zarr/{{ time }}_{{ method }}_z{{ zoom }}_atm
+      urlpath: /work/bm1235/k203123/dy3ha-p/experiments/d3hp003/outdata/d3hp003.zarr/{{ time }}_{{ time_method }}_z{{ zoom }}_atm
     driver: zarr
+    description: Atmosphere-only simulation at 2.5 km resolution
     parameters:
       time:
         allowed:
@@ -54,15 +75,17 @@ sources:
         default: P1D
         description: time resolution of the dataset
         type: str
-      method:
+      time_method:
         allowed:
           - mean
           - inst
-        default: inst
+        default: mean
         description: time subsetting method
         type: str
       zoom:
         allowed:
+        - 11
+        - 10
         - 9
         - 8
         - 7
@@ -81,3 +104,314 @@ sources:
       simulation_id: d3hp003
       time_start: 2020-01-01T00:00:00
       time_end: 2021-03-01T00:00:00
+      title: ICON 2.5 km simulation
+      summary: |
+        Atmosphere-only simulation at 2.5 km resolution. Run for 1 year and 2 months starting in 2020.
+
+        [Visual overview of dataset](https://s3.eu-dkrz-1.dkrz.cloud/wrcp-hackathon/data/ICON/d3hp003.html)
+
+        **Simulation**:
+          * Source code: icon-mpim:feature-dy3ha-p-experiments at commit b9c9da5cef4e7faadf13c2fe213de0c990c94bf3
+          * Horizontal grid: R2B10, 83,886,080 cells, nominal resolution dx = ~2.5 km
+          * Vertical grid: 91 half levels, 90 full levels at mid height between upper and lower half level
+          * Initial conditions: From IFS for date 2020-01-01T00:00:00Z
+          * External data: 
+            * SST and SIC as monthly mean fields pre-processed for usage in AMIP simulations
+            * Well mixed greenhouse gases CO2, CH4, N2O, CFC11, CFC12 as annual means
+            * O3 simulated or prescribed from monthly and zonal mean fields
+
+        **Simulation modifications**:
+          * 2020-05-28T00:00:00Z: timestep atm: 20s -> 15s, ozone: prognostic -> external data, zmaxcloudy: 33km -> 22.5km. zmaxcloudy is the maximum height up to which cloud microphysics is computed.
+          * 2020-06-05T00:00:00Z: timestep atm: 15s -> 20s
+          * 2020-07-27T00:00:00Z: dt_atm: 20s -> 18s, dynamics substeps: 5 -> 6
+          * 2020-08-04T00:00:00Z: dt_atm: 18s -> 20s, dynamics substeps: 6 -> 5
+
+        **Processing**
+          * Fields were remapped from the 2.5 km ICON grid to the Healpix grid with order 12 using the nearest-neighbor interpolation. Lower levels were generated from this Healpix order using conservative aggregation.
+          * Level 12 data were deleted due to the disk space constraints.
+          * 2D fields time means are calculated from each simulation timestep values.
+          * 3D fields are generated on 30 pressure levels as instantaneous values starting at 6-hourly interval (PT6H). Time means are calculated from the instantaneous values.
+          * Additionally, a 3D field `vor` on 3 pressure levels is available as instantaneous values starting at PT3H.
+          * Water content of soil layers `mrso` is available as a 3D field with 5 soil levels starting from PT3H.
+
+      references: https://www.icon-model.org/
+      license: Creative Commons CC BY 4.0. https://creativecommons.org/licenses/by/4.0/
+      creator_name: Karl-Hermann Wieners, Marco Giorgietta, Siddhant Tibrewal
+      creator_email: karl-hermann.wieners@mpimet.mpg.de, marco.giorgetta@mpimet.mpg.de, siddhant.tibrewal@mpimet.mpg.de
+      source: ICON Model
+      institution: Max Planck Institute for Meteorology
+      citation: Takasuka, D., Satoh, M., Miyakawa, T. et al. A protocol and analysis of year-long simulations of global storm-resolving models and beyond. Prog Earth Planet Sci 11, 66 (2024). https://doi.org/10.1186/s40645-024-00668-1
+  casesm2_10km_nocumulus:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: /work/bm1235/CAS_DATA/CAS-ESM2_10km_nocumulus_{{ time }}_z{{ zoom }}.zarr
+    driver: zarr
+    description: Atmosphere-only simulation at 10 km resolution
+    parameters:
+      time:
+        allowed:
+        - PT1H
+        - PT3H
+        - PT6H
+        default: PT6H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+        - 9
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        - 0
+        default: 9
+        description: zoom resolution of the dataset
+        type: int
+    # metadata in CN main.yaml
+  tracking-d3hp003:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: /work/mh0033/m221071/works/hk25/d3hp003/hk25-mcs/PyFLEXTRKR/icon_d3hp003/mcs_tracking_hp9/mcstracking/mcs_mask_hp9_20200102.0000_20201231.2330.zarr
+    driver: zarr
+    description: Tracking for ICON d3hp003
+
+  icon_d3hp003feb:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: /work/bm1235/k203123/dy3ha-p/experiments/d3hp003feb/outdata/d3hp003feb.zarr/{{ time }}_{{ time_method }}_z{{ zoom }}_atm
+    driver: zarr
+    description: Atmosphere-only simulation at 2.5 km resolution
+    parameters:
+      time:
+        allowed:
+        - PT15M
+        - PT3H
+        - PT6H
+        default: PT15M
+        description: time resolution of the dataset
+        type: str
+      time_method:
+        allowed:
+          - mean
+          - inst
+        default: inst
+        description: time subsetting method
+        type: str
+      zoom:
+        allowed:
+        - 11
+        - 10
+        - 9
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        - 0
+        default: 0
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      source_id: ICON-ESM
+      simulation_id: d3hp003feb
+      time_start: 2020-02-01T00:00:00
+      time_end: 2021-02-02T00:00:00
+      title: ICON 2.5 km simulation
+      summary: |
+        Atmosphere-only simulation at 2.5 km resolution. Run for 1 day only.
+        Same initial conditions as in icon_d3hp003.
+
+        **Processing**
+          * PT15M output for a subset (PT1H) of the icon_d3hp003 dataset.
+          * See icon_d3hp003 metadata for more description.
+
+      references: https://www.icon-model.org/
+      license: Creative Commons CC BY 4.0. https://creativecommons.org/licenses/by/4.0/
+      creator_name: Karl-Hermann Wieners, Marco Giorgietta, Siddhant Tibrewal
+      creator_email: karl-hermann.wieners@mpimet.mpg.de, marco.giorgetta@mpimet.mpg.de, siddhant.tibrewal@mpimet.mpg.de
+      source: ICON Model
+      institution: Max Planck Institute for Meteorology
+      citation: Takasuka, D., Satoh, M., Miyakawa, T. et al. A protocol and analysis of year-long simulations of global storm-resolving models and beyond. Prog Earth Planet Sci 11, 66 (2024). https://doi.org/10.1186/s40645-024-00668-1
+
+  icon_d3hp003aug:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: /work/bm1235/k203123/dy3ha-p/experiments/d3hp003aug/outdata/d3hp003aug.zarr/{{ time }}_{{ time_method }}_z{{ zoom }}_atm
+    driver: zarr
+    description: Atmosphere-only simulation at 2.5 km resolution
+    parameters:
+      time:
+        allowed:
+        - PT15M
+        - PT3H
+        - PT6H
+        default: PT15M
+        description: time resolution of the dataset
+        type: str
+      time_method:
+        allowed:
+          - mean
+          - inst
+        default: inst
+        description: time subsetting method
+        type: str
+      zoom:
+        allowed:
+        - 11
+        - 10
+        - 9
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        - 0
+        default: 0
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      source_id: ICON-ESM
+      simulation_id: d3hp003aug
+      time_start: 2020-08-01T00:00:00
+      time_end: 2021-08-02T00:00:00
+      title: ICON 2.5 km simulation
+      summary: |
+        Atmosphere-only simulation at 2.5 km resolution. Run for 1 day only.
+        Same initial conditions as in icon_d3hp003.
+
+        **Processing**
+          * PT15M output for a subset (PT1H) of the icon_d3hp003 dataset.
+          * See icon_d3hp003 metadata for more description.
+
+      references: https://www.icon-model.org/
+      license: Creative Commons CC BY 4.0. https://creativecommons.org/licenses/by/4.0/
+      creator_name: Karl-Hermann Wieners, Marco Giorgietta, Siddhant Tibrewal
+      creator_email: karl-hermann.wieners@mpimet.mpg.de, marco.giorgetta@mpimet.mpg.de, siddhant.tibrewal@mpimet.mpg.de
+      source: ICON Model
+      institution: Max Planck Institute for Meteorology
+      citation: Takasuka, D., Satoh, M., Miyakawa, T. et al. A protocol and analysis of year-long simulations of global storm-resolving models and beyond. Prog Earth Planet Sci 11, 66 (2024). https://doi.org/10.1186/s40645-024-00668-1
+  ifs_tco3999_rcbmf:
+    args:
+      storage_options:
+        remote_protocol: file
+        lazy: true            
+      consolidated: false
+      urlpath: >
+          {% with time_map = {'PT1H': 'hourly', 'P1M': 'monthly'}, zoom_map = {7: '128', 9: '512', 10: '1024', 11: '2048'} -%}
+          reference::/work/bm1235/b382473/IFS_AMIP/production/parquets_2d3d/tco3999-ng-rcbmf_end/{{ time_map[time] }}_healpix{{ zoom_map[zoom] }}.parq
+          {%- endwith %}
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+        - PT1H
+        - P1M
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+        - 7
+        - 11
+        default: 7
+        description: zoom level of the dataset
+        type: int
+    metadata:
+      title: IFS 2.8km simulation (RCBMF), original IFS variables
+      summary: |
+        Atmosphere-only simulation at 2.8 km resolution, with reduced cloud base mass flux. Run for 1 year and 2 months, starting in 2020.
+
+        **General**:
+          * The Integrated Forecasting System (IFS), developed at ECMWF, is a spectral-transform atmospheric model with two-time-level semi-implicit, semi-Lagrangian time stepping (Temperton et al., 2001; Hortal, 2002; Diamantakis and Váňa, 2021). It is here running in atmosphere-only mode, that is without an ocean model. It is still coupled to the interactive land and ocean wave models.
+          * This simulation is at 2.8km in atmosphere-only mode, with SST and sea ice concentration being provided by ESA CCI v3.0.1.
+
+        **Simulation**:
+          * This is one of two new atmosphere-only IFS simulations. This one is at 2.8 km resolution, with the other one (ifs_tco2559_rcbmf) is at 4.4 km. The simulations are started on 01.01.2020 and run for 14 months, ending on 01.03.2021. The two simulations differ only in their resolution. Both simulations use "reduced cloud base mass flux" (RCBMF) which has the shallow convection scheme fully active and the deep convection scheme weakly active (with a strongly reduced cloud base mass flux), in agreement with 9 km nextGEMS production simulations.
+          * This atmosphere-only simulation is complementary to the 2.8 km coupled IFS-FESOM simulations. It differs from ifs_tco3999-ng5_rcbmf only by the replacement of the ocean model with observed SST forcing.
+
+        **Processing**:
+          * This dataset uses default IFS naming of variables. Please refer to the [parameter database](https://codes.ecmwf.int/grib/param-db/) for more information on the available variables.
+          * Output is written to HEALPix H2048 (zoom level 11, about 3 km resolution), and to H128 (level 7, about 50 km resolution). The remapping to zoom level 7 used conservative interpolation for the 2D variables and linear interpolation for the 3D variables. Remapping to the high-resolution H2048 (level 11) was also done with linear interpolation. Output is available hourly (PT1H). In addition, we also provide monthly means (P1M), but only for those variables that are accumulated in time (all fluxes, e.g. radiation, precipitation, etc.).
+      license: Creative Commons CC BY 4.0. https://creativecommons.org/licenses/by/4.0/
+      creator_name: Matthias Aengenheyster, Tobias Becker, Thomas Rackow, Xabier Pedruzo-Bagazgoitia
+      creator_email: matthias.aengenheyster@ecmwf.int, tobias.becker@ecmwf.int, thomas.rackow@ecmwf.int, xabier.pedruzo@ecmwf.int
+      source_id: IFS
+      simulation_id: RCBMF
+      time_start: 2020-01-01T00:00:00
+      time_end: 2021-03-01T00:00:00
+      references: https://doi.org/10.5194/gmd-18-33-2025, https://www.ecmwf.int/en/forecasts/documentation-and-support/changes-ecmwf-model, 
+      institution: European Centre for Medium-Range Weather Forecasts (ECMWF)
+      citation: Rackow, T., Pedruzo-Bagazgoitia, X., Becker, T., Milinski, S., Sandu, I., Aguridan, R., Bechtold, P., Beyer, S., Bidlot, J., Boussetta, S., Deconinck, W., Diamantakis, M., Dueben, P., Dutra, E., Forbes, R., Ghosh, R., Goessling, H. F., Hadade, I., Hegewald, J., Jung, T., Keeley, S., Kluft, L., Koldunov, N., Koldunov, A., Kölling, T., Kousal, J., Kühnlein, C., Maciel, P., Mogensen, K., Quintino, T., Polichtchouk, I., Reuter, B., Sármány, D., Scholz, P., Sidorenko, D., Streffing, J., Sützl, B., Takasuka, D., Tietsche, S., Valentini, M., Vannière, B., Wedi, N., Zampieri, L., and Ziemen, F. - Multi-year simulations at kilometre scale with the Integrated Forecasting System coupled to FESOM2.5 and NEMOv3.4, Geosci. Model Dev., 18, 33–69, https://doi.org/10.5194/gmd-18-33-2025, 2025.
+  ifs_tco2559_rcbmf:
+    args:
+      storage_options:
+        remote_protocol: file
+        lazy: true            
+      consolidated: false
+      urlpath: 
+        - >
+          {% with time_map = {'PT1H': 'hourly', 'P1D': 'daily', 'P1M': 'monthly'}, zoom_map = {7: '128', 9: '512', 10: '1024', 11: '2048'} -%}
+          reference::/work/bm1235/b382473/IFS_AMIP/production/parquets/tco2559-eerie_production_202407-rcbmf_combination/2D_{{ time_map[time] }}_healpix{{ zoom_map[zoom] }}.parq
+          {%- endwith %}
+        - >
+          {% with time_map = {'PT1H': 'hourly', 'P1D': 'daily', 'P1M': 'monthly'}, zoom_map = {7: '128', 9: '512', 10: '1024', 11: '2048'} -%}
+          reference::/work/bm1235/b382473/IFS_AMIP/production/parquets/tco2559-eerie_production_202407-rcbmf_combination/3D_{{ time_map[time] }}_healpix{{ zoom_map[zoom] }}.parq
+          {%- endwith %}
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+        - PT1H
+        - P1D
+        - P1M
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+        - 7
+        - 10
+        default: 7
+        description: zoom level of the dataset
+        type: int
+    metadata:
+      title: IFS 4.4km simulation (RCBMF), original IFS variables
+      summary: |
+        Atmosphere-only simulation at 4.4 km resolution, with reduced cloud base mass flux. Run for 1 year and 2 months, starting in 2020.
+
+        **General**:
+          * The Integrated Forecasting System (IFS), developed at ECMWF, is a spectral-transform atmospheric model with two-time-level semi-implicit, semi-Lagrangian time stepping (Temperton et al., 2001; Hortal, 2002; Diamantakis and Váňa, 2021). It is here running in atmosphere-only mode, that is without an ocean model. It is still coupled to the interactive land and ocean wave models.
+          * This simulation is at 4.4km in atmosphere-only mode, with SST and sea ice concentration being provided by ESA CCI v3.0.1.
+
+        **Simulation**:
+          * This is one of two new atmosphere-only IFS simulations. This one is at 4.4 km resolution, with the other one (ifs_tco3999_rcbmf) is at 2.8 km. The simulations are started on 01.01.2020 and run for 14 months, ending on 01.03.2021. The two simulations differ only in their resolution, and in slight differences in output treatment and availability. Both simulations use "reduced cloud base mass flux" (RCBMF) which has the shallow convection scheme fully active and the deep convection scheme weakly active (with a strongly reduced cloud base mass flux), in agreement with 9 km nextGEMS production simulations.
+          * The simulation has the same physics as the coupled nextGEMS production simulations.
+          * The simulation is closely aligned with the EERIE project and the AMIP simulations done there (1980-2023, 1 member at 9 km and 10 members at 28 km). Those runs use "deep-on" convection, not "RCBMF". A 6-month twin simulation at 4.4 km [exists](https://discover.dkrz.de/external/stac2.cloud.dkrz.de/fastapi/collections/eerie-eerie-ecmf-ifs-amip-tco2559-hist-v20240901) with "deep-on" settings.
+
+        **Processing**:
+          * This dataset uses default IFS naming of variables. Please refer to the [parameter database](https://codes.ecmwf.int/grib/param-db/) for more information on the available variables.
+          * Output is written to HEALPix H1024 (zoom level 10, about 6 km resolution), and to H128 (level 7, about 50 km resolution). The remapping to healpix was done with linear interpolation (different to ifs_tco3999_rcbmf and the coupled tco3999 runs, which use conservative interpolation for H128 2D variables). Output is available hourly (PT1H), daily means (P1D) and monthly means (P1M). Daily and monthly means also include some min/max fields, these are compute on the model timestep. PT1H includes instantaneous fields (valid at the given timestep) and accumulated fields (fluxes, e.g. precipitation) accumulated over the 1-hour interval *preceding* the given timestep (precipitation at 12:00 has been accumulated between 11:00 and 12:00). Daily and monthly means have a timestep at the center of the time interval (e.g. daily means are written at 12:00).
+      license: Creative Commons CC BY 4.0. https://creativecommons.org/licenses/by/4.0/
+      creator_name: Matthias Aengenheyster, Tobias Becker, Thomas Rackow, Xabier Pedruzo-Bagazgoitia
+      creator_email: matthias.aengenheyster@ecmwf.int, tobias.becker@ecmwf.int, thomas.rackow@ecmwf.int, xabier.pedruzo@ecmwf.int
+      source_id: IFS
+      simulation_id: RCBMF
+      time_start: 2020-01-01T00:00:00
+      time_end: 2021-03-01T00:00:00
+      references: https://doi.org/10.5194/gmd-18-33-2025, https://www.ecmwf.int/en/forecasts/documentation-and-support/changes-ecmwf-model, 
+      institution: European Centre for Medium-Range Weather Forecasts (ECMWF)
+      citation: Rackow, T., Pedruzo-Bagazgoitia, X., Becker, T., Milinski, S., Sandu, I., Aguridan, R., Bechtold, P., Beyer, S., Bidlot, J., Boussetta, S., Deconinck, W., Diamantakis, M., Dueben, P., Dutra, E., Forbes, R., Ghosh, R., Goessling, H. F., Hadade, I., Hegewald, J., Jung, T., Keeley, S., Kluft, L., Koldunov, N., Koldunov, A., Kölling, T., Kousal, J., Kühnlein, C., Maciel, P., Mogensen, K., Quintino, T., Polichtchouk, I., Reuter, B., Sármány, D., Scholz, P., Sidorenko, D., Streffing, J., Sützl, B., Takasuka, D., Tietsche, S., Valentini, M., Vannière, B., Wedi, N., Zampieri, L., and Ziemen, F. - Multi-year simulations at kilometre scale with the Integrated Forecasting System coupled to FESOM2.5 and NEMOv3.4, Geosci. Model Dev., 18, 33–69, https://doi.org/10.5194/gmd-18-33-2025, 2025.

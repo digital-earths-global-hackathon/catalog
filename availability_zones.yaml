@@ -1,3 +1,4 @@
+
 online:
   - online
 EU:
@@ -12,3 +13,10 @@ NCAR:
 UK:
   - online
   - UK
+JAPAN:
+  - online
+  - JAPAN
+
+CN:
+  - online
+  - CN

@@ -6,7 +6,7 @@ sources:
     driver: zarr
     parameters:
       zoom:
-        allowed: [8, 7]
+        allowed: [8, 7, 6, 5, 4, 3, 2, 1, 0]
         default: 7
         description: zoom resolution of the dataset
         type: int
@@ -17,15 +17,44 @@ sources:
     driver: zarr
     parameters:
       zoom:
-        allowed: [8, 7]
+        allowed: [8, 7, 6, 5, 4, 3, 2, 1, 0]
         default: 7
         description: zoom resolution of the dataset
         type: int
   MERRA2:
     args:
       consolidated: true
-      urlpath: https://swift.dkrz.de/v1/dkrz_41caca03ec414c2f95f52b23b775134f/reanalysis/v1/MERRA2_P1M_7.zarr
+      urlpath: https://swift.dkrz.de/v1/dkrz_41caca03ec414c2f95f52b23b775134f/reanalysis/v1/MERRA2_P1M_{{ zoom }}.zarr
     driver: zarr
+    parameters:
+      zoom:
+        allowed: [7, 6, 5, 4, 3, 2, 1, 0]
+        default: 7
+        description: zoom resolution of the dataset
+        type: int
+  IR_IMERG:
+    args:
+      consolidated: true
+      urlpath: https://hackathon-o.s3-ext.jc.rl.ac.uk/obs-data/dev/v1/IR_IMERG_combined/IR_IMERG_combined_V07B.hp_z{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      zoom:
+        allowed:
+          - 9
+        default: 9
+        description: zoom resolution of the dataset
+        type: int
+  CERES_EBAF:
+    args: 
+      consolidated: true
+      urlpath: https://s3.eu-dkrz-1.dkrz.cloud/wrcp-hackathon/data/contributions/CERES/CERES_EBAF-TOA_Ed4.2.1_hp{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      zoom:
+        allowed: [6, 5, 4, 3, 2, 1, 0]
+        default: 6
+        description: zoom resolution of the dataset
+        type: int
   icon_ngc4008:
     args:
       chunks: null
@@ -61,7 +90,7 @@ sources:
     args:
       chunks: null
       consolidated: true
-      urlpath: https://s3.eu-dkrz-1.dkrz.cloud/wrcp-hackathon/data/ICON/d3hp003.zarr/{{ time }}_{{ method }}_z{{ zoom }}_atm
+      urlpath: https://s3.eu-dkrz-1.dkrz.cloud/wrcp-hackathon/data/ICON/d3hp003.zarr/{{ time }}_{{ time_method }}_z{{ zoom }}_atm
     driver: zarr
     parameters:
       time:
@@ -73,15 +102,59 @@ sources:
         default: P1D
         description: time resolution of the dataset
         type: str
-      method:
+      time_method:
         allowed:
           - mean
           - inst
+        default: mean
+        description: time subsetting method
+        type: str
+      zoom:
+        allowed:
+        - 11
+        - 10
+        - 9
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        - 0
+        default: 0
+        description: zoom resolution of the dataset
+        type: int
+    # metadata: (see EU catalog)
+
+  icon_d3hp003feb:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: https://s3.eu-dkrz-1.dkrz.cloud/wrcp-hackathon/data/ICON/d3hp003feb.zarr/{{ time }}_{{ time_method }}_z{{ zoom }}_atm
+    driver: zarr
+    description: Atmosphere-only simulation at 2.5 km resolution
+    parameters:
+      time:
+        allowed:
+        - PT15M
+        - PT3H
+        - PT6H
+        default: PT15M
+        description: time resolution of the dataset
+        type: str
+      time_method:
+        allowed:
+        - mean
+        - inst
         default: inst
         description: time subsetting method
         type: str
       zoom:
         allowed:
+        - 11
+        - 10
         - 9
         - 8
         - 7
@@ -97,14 +170,364 @@ sources:
         type: int
     metadata:
       source_id: ICON-ESM
-      simulation_id: d3hp003
+      simulation_id: d3hp003feb
+      time_start: 2020-02-01T00:00:00
+      time_end: 2021-02-02T00:00:00
+      title: ICON 2.5 km simulation
+      summary: |
+        Atmosphere-only simulation at 2.5 km resolution. Run for 1 day only.
+        Same initial conditions as in icon_d3hp003.
+
+        **Processing**
+          * PT15M output for a subset (PT1H) of the icon_d3hp003 dataset.
+          * See icon_d3hp003 metadata for more description.
+
+      references: https://www.icon-model.org/
+      license: Creative Commons CC BY 4.0. https://creativecommons.org/licenses/by/4.0/
+      creator_name: Karl-Hermann Wieners, Marco Giorgietta, Siddhant Tibrewal
+      creator_email: karl-hermann.wieners@mpimet.mpg.de, marco.giorgetta@mpimet.mpg.de, siddhant.tibrewal@mpimet.mpg.de
+      source: ICON Model
+      institution: Max Planck Institute for Meteorology
+      citation: Takasuka, D., Satoh, M., Miyakawa, T. et al. A protocol and analysis of year-long simulations of global storm-resolving models and beyond. Prog Earth Planet Sci 11, 66 (2024). https://doi.org/10.1186/s40645-024-00668-1
+
+  icon_d3hp003aug:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: https://s3.eu-dkrz-1.dkrz.cloud/wrcp-hackathon/data/ICON/d3hp003aug.zarr/{{ time }}_{{ time_method }}_z{{ zoom }}_atm
+    driver: zarr
+    description: Atmosphere-only simulation at 2.5 km resolution
+    parameters:
+      time:
+        allowed:
+        - PT15M
+        - PT3H
+        - PT6H
+        default: PT15M
+        description: time resolution of the dataset
+        type: str
+      time_method:
+        allowed:
+        - mean
+        - inst
+        default: inst
+        description: time subsetting method
+        type: str
+      zoom:
+        allowed:
+        - 11
+        - 10
+        - 9
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        - 0
+        default: 0
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      source_id: ICON-ESM
+      simulation_id: d3hp003aug
+      time_start: 2020-08-01T00:00:00
+      time_end: 2021-08-02T00:00:00
+      title: ICON 2.5 km simulation
+      summary: |
+        Atmosphere-only simulation at 2.5 km resolution. Run for 1 day only.
+        Same initial conditions as in icon_d3hp003.
+
+        **Processing**
+          * PT15M output for a subset (PT1H) of the icon_d3hp003 dataset.
+          * See icon_d3hp003 metadata for more description.
+
+      references: https://www.icon-model.org/
+      license: Creative Commons CC BY 4.0. https://creativecommons.org/licenses/by/4.0/
+      creator_name: Karl-Hermann Wieners, Marco Giorgietta, Siddhant Tibrewal
+      creator_email: karl-hermann.wieners@mpimet.mpg.de, marco.giorgetta@mpimet.mpg.de, siddhant.tibrewal@mpimet.mpg.de
+      source: ICON Model
+      institution: Max Planck Institute for Meteorology
+      citation: Takasuka, D., Satoh, M., Miyakawa, T. et al. A protocol and analysis of year-long simulations of global storm-resolving models and beyond. Prog Earth Planet Sci 11, 66 (2024). https://doi.org/10.1186/s40645-024-00668-1
+
+  ifs_tco3999-ng5_rcbmf_cf:
+    args:
+      chunks: auto
+      consolidated: true
+      urlpath: >
+        {% with time_map = {'PT1H': 'hourly'}, zoom_map = {7: '128', 9: '512', 10: '1024', 11: '2048'} -%}
+        https://s3.eu-dkrz-1.dkrz.cloud/wrcp-hackathon/data/IFS-FESOM/{{ time_map[time] }}_healpix{{ zoom_map[zoom] }}.zarr
+        {%- endwith %}
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+        - PT1H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+        - 7
+        - 11
+        default: 7
+        description: zoom level of the dataset
+        type: int
+    metadata:
+      title: IFS-FESOM 2.8km simulation (RCBMF), CF conventions + rechunked
+      summary: |
+        Main coupled IFS simulation at 2.8 km resolution, with reduced cloud base mass flux. Run for 1 year and 2 months, starting in 2020. Just available via the online catalog (s3 DKRZ cloud).
+
+        **General**:
+          * The Integrated Forecasting System (IFS), developed at ECMWF, is a spectral-transform atmospheric model with two-time-level semi-implicit, semi-Lagrangian time stepping (Temperton et al., 2001; Hortal, 2002; Diamantakis and Váňa, 2021). It is coupled to other Earth system components (land, waves, ocean, sea ice).
+          * The global hackathon simulations at 2.8km are with the IFS-FESOM configuration (Rackow et al. 2025), coupled to the FESOM2 ocean-sea ice model.
+
+        **Simulation**:
+          * This is one of two new IFS simulations at 2.8 km resolution, coupled to FESOM 5 km. The simulations are started on 01.01.2020 and run for 14 months, ending on 01.03.2021. The two simulations differ in the treatment of deep convection. This main simulation (RCBMF) has the shallow convection scheme fully active and the deep convection scheme weakly active (with a strongly reduced cloud base mass flux), in agreement with 9 km nextGEMS production simulations, while the second simulation (DEEPOFF; catalog entry *ifs_tco3999-ng5_deepoff*) only has the shallow convection scheme active and the deep convection scheme completely switched off.
+
+        **Processing**:
+          * This main IFS simulation at 2.8 km is provided via the DKRZ cloud (s3), was rechunked, and largely follows CF naming of variables, as in the [HK25 data request](https://digital-earths-global-hackathon.github.io/hosting/technical/data_request.html). You can check the dataset_transformation script [here](https://github.com/digital-earths-global-hackathon/tools/blob/transform-ifs/dataset_transforms/ifs2s3.py) for details how IFS variables were mapped to the CF standard. Metadata may not be fully consistent yet for transformed variables but will be updated step by step (the target was to follow units of the according ICON simulation). There are additional IFS variables provided with their original naming; please refer to the [parameter database](https://codes.ecmwf.int/grib/param-db/) for more information on those additional variables.
+          * The same simulation without variable transformation/with original IFS variable naming is available under catalog entry *ifs_tco3999-ng5_rcbmf*. Note that this dataset is not rechunked, so you may experience different performance depending on the task.
+          * Output is written to HEALPix H2048 (zoom level 11, about 3 km resolution), and to H128 (level 7, about 50 km resolution). The remapping to zoom level 7 used conservative interpolation for the 2D variables and linear interpolation for the 3D variables. Remapping to the high-resolution H2048 (level 11) was also done with linear interpolation. Output is available hourly (PT1H). In addition, we also provide monthly means (P1M), but only for those variables that are accumulated in time (all fluxes, e.g. radiation, precipitation, etc.).
+      license: Creative Commons CC BY 4.0. https://creativecommons.org/licenses/by/4.0/
+      creator_name: Thomas Rackow, Tobias Becker, Xabier Pedruzo-Bagazgoitia
+      creator_email: thomas.rackow@ecmwf.int, tobias.becker@ecmwf.int, xabier.pedruzo@ecmwf.int
+      source_id: IFS-FESOM
+      simulation_id: RCBMF
       time_start: 2020-01-01T00:00:00
       time_end: 2021-03-01T00:00:00
+      references: https://doi.org/10.5194/gmd-18-33-2025, https://www.ecmwf.int/en/forecasts/documentation-and-support/changes-ecmwf-model, https://fesom.de
+      institution: European Centre for Medium-Range Weather Forecasts (ECMWF)
+      citation: Rackow, T., Pedruzo-Bagazgoitia, X., Becker, T., Milinski, S., Sandu, I., Aguridan, R., Bechtold, P., Beyer, S., Bidlot, J., Boussetta, S., Deconinck, W., Diamantakis, M., Dueben, P., Dutra, E., Forbes, R., Ghosh, R., Goessling, H. F., Hadade, I., Hegewald, J., Jung, T., Keeley, S., Kluft, L., Koldunov, N., Koldunov, A., Kölling, T., Kousal, J., Kühnlein, C., Maciel, P., Mogensen, K., Quintino, T., Polichtchouk, I., Reuter, B., Sármány, D., Scholz, P., Sidorenko, D., Streffing, J., Sützl, B., Takasuka, D., Tietsche, S., Valentini, M., Vannière, B., Wedi, N., Zampieri, L., and Ziemen, F. - Multi-year simulations at kilometre scale with the Integrated Forecasting System coupled to FESOM2.5 and NEMOv3.4, Geosci. Model Dev., 18, 33–69, https://doi.org/10.5194/gmd-18-33-2025, 2025.
+  # ifs_tco3999_rcbmf:
+  #   args:
+  #     chunks: auto
+  #     consolidated: true
+  #     urlpath: >
+  #         {% with time_map = {'PT1H': 'hourly', 'P1M': 'monthly'}, zoom_map = {7: '128', 9: '512', 10: '1024', 11: '2048'} -%}
+  #         https://eerie.cloud.dkrz.de/datasets/nextgems.IFS_2.8-AMIP-production/{{ time_map[time] }}_healpix{{ zoom_map[zoom] }}.parq
+  #         {%- endwith %}
+  #   driver: zarr
+  #   parameters:
+  #     time:
+  #       allowed:
+  #       - PT1H
+  #       - P1M
+  #       default: PT1H
+  #       description: time resolution of the dataset
+  #       type: str
+  #     zoom:
+  #       allowed:
+  #       - 7
+  #       - 11
+  #       default: 7
+  #       description: zoom level of the dataset
+  #       type: int
+  #   metadata:
+  #     title: IFS 2.8km simulation (RCBMF), original IFS variables
+  #     summary: |
+  #       Atmosphere-only simulation at 2.8 km resolution, with reduced cloud base mass flux. Run for 1 year and 2 months, starting in 2020.
+
+  #       **General**:
+  #         * The Integrated Forecasting System (IFS), developed at ECMWF, is a spectral-transform atmospheric model with two-time-level semi-implicit, semi-Lagrangian time stepping (Temperton et al., 2001; Hortal, 2002; Diamantakis and Váňa, 2021). It is here running in atmosphere-only mode, that is without an ocean model. It is still coupled to the interactive land and ocean wave models.
+  #         * This simulation is at 2.8km in atmosphere-only mode, with SST and sea ice concentration being provided by ESA CCI v3.0.1.
+
+  #       **Simulation**:
+  #         * This is one of two new atmosphere-only IFS simulations. This one is at 2.8 km resolution, with the other one (ifs_tco2559_rcbmf) is at 4.4 km. The simulations are started on 01.01.2020 and run for 14 months, ending on 01.03.2021. The two simulations differ only in their resolution. Both simulations use "reduced cloud base mass flux" (RCBMF) which has the shallow convection scheme fully active and the deep convection scheme weakly active (with a strongly reduced cloud base mass flux), in agreement with 9 km nextGEMS production simulations.
+  #         * This atmosphere-only simulation is complementary to the 2.8 km coupled IFS-FESOM simulations. It differs from ifs_tco3999-ng5_rcbmf only by the replacement of the ocean model with observed SST forcing.
+
+  #       **Processing**:
+  #         * This dataset uses default IFS naming of variables. Please refer to the [parameter database](https://codes.ecmwf.int/grib/param-db/) for more information on the available variables.
+  #         * Output is written to HEALPix H2048 (zoom level 11, about 3 km resolution), and to H128 (level 7, about 50 km resolution). The remapping to zoom level 7 used conservative interpolation for the 2D variables and linear interpolation for the 3D variables. Remapping to the high-resolution H2048 (level 11) was also done with linear interpolation. Output is available hourly (PT1H). In addition, we also provide monthly means (P1M), but only for those variables that are accumulated in time (all fluxes, e.g. radiation, precipitation, etc.).
+  #     license: Creative Commons CC BY 4.0. https://creativecommons.org/licenses/by/4.0/
+  #     creator_name: Matthias Aengenheyster, Tobias Becker, Thomas Rackow, Xabier Pedruzo-Bagazgoitia
+  #     creator_email: matthias.aengenheyster@ecmwf.int, tobias.becker@ecmwf.int, thomas.rackow@ecmwf.int, xabier.pedruzo@ecmwf.int
+  #     source_id: IFS
+  #     simulation_id: RCBMF
+  #     time_start: 2020-01-01T00:00:00
+  #     time_end: 2021-03-01T00:00:00
+  #     references: https://doi.org/10.5194/gmd-18-33-2025, https://www.ecmwf.int/en/forecasts/documentation-and-support/changes-ecmwf-model, 
+  #     institution: European Centre for Medium-Range Weather Forecasts (ECMWF)
+  #     citation: Rackow, T., Pedruzo-Bagazgoitia, X., Becker, T., Milinski, S., Sandu, I., Aguridan, R., Bechtold, P., Beyer, S., Bidlot, J., Boussetta, S., Deconinck, W., Diamantakis, M., Dueben, P., Dutra, E., Forbes, R., Ghosh, R., Goessling, H. F., Hadade, I., Hegewald, J., Jung, T., Keeley, S., Kluft, L., Koldunov, N., Koldunov, A., Kölling, T., Kousal, J., Kühnlein, C., Maciel, P., Mogensen, K., Quintino, T., Polichtchouk, I., Reuter, B., Sármány, D., Scholz, P., Sidorenko, D., Streffing, J., Sützl, B., Takasuka, D., Tietsche, S., Valentini, M., Vannière, B., Wedi, N., Zampieri, L., and Ziemen, F. - Multi-year simulations at kilometre scale with the Integrated Forecasting System coupled to FESOM2.5 and NEMOv3.4, Geosci. Model Dev., 18, 33–69, https://doi.org/10.5194/gmd-18-33-2025, 2025.
+  # ifs_tco2559_rcbmf:
+  #   args:
+  #     chunks: auto
+  #     consolidated: false
+  #     urlpath: 
+  #       - >
+  #         {% with time_map = {'PT1H': 'hourly', 'P1D': 'daily', 'P1M': 'monthly'}, zoom_map = {7: '128', 9: '512', 10: '1024', 11: '2048'} -%}
+  #         https://eerie.cloud.dkrz.de/datasets/nextgems.IFS_4.4-AMIP-production.2D_{{ time_map[time] }}_healpix{{ zoom_map[zoom] }}/kerchunk
+  #         {%- endwith %}
+  #       - >
+  #         {% with time_map = {'PT1H': 'hourly', 'P1D': 'daily', 'P1M': 'monthly'}, zoom_map = {7: '128', 9: '512', 10: '1024', 11: '2048'} -%}
+  #         https://eerie.cloud.dkrz.de/datasets/nextgems.IFS_4.4-AMIP-production.3D_{{ time_map[time] }}_healpix{{ zoom_map[zoom] }}/kerchunk
+  #         {%- endwith %}
+  #   driver: zarr
+  #   parameters:
+  #     time:
+  #       allowed:
+  #       - PT1H
+  #       - P1D
+  #       - P1M
+  #       default: PT1H
+  #       description: time resolution of the dataset
+  #       type: str
+  #     zoom:
+  #       allowed:
+  #       - 7
+  #       - 10
+  #       default: 7
+  #       description: zoom level of the dataset
+  #       type: int
+  #   metadata:
+  #     title: IFS 4.4km simulation (RCBMF), original IFS variables
+  #     summary: |
+  #       Atmosphere-only simulation at 4.4 km resolution, with reduced cloud base mass flux. Run for 1 year and 2 months, starting in 2020. (Online access via EERIE cloud).
+
+  #       **General**:
+  #         * The Integrated Forecasting System (IFS), developed at ECMWF, is a spectral-transform atmospheric model with two-time-level semi-implicit, semi-Lagrangian time stepping (Temperton et al., 2001; Hortal, 2002; Diamantakis and Váňa, 2021). It is here running in atmosphere-only mode, that is without an ocean model. It is still coupled to the interactive land and ocean wave models.
+  #         * This simulation is at 4.4km in atmosphere-only mode, with SST and sea ice concentration being provided by ESA CCI v3.0.1.
+
+  #       **Simulation**:
+  #         * This is one of two new atmosphere-only IFS simulations. This one is at 4.4 km resolution, with the other one (ifs_tco3999_rcbmf) is at 2.8 km. The simulations are started on 01.01.2020 and run for 14 months, ending on 01.03.2021. The two simulations differ only in their resolution, and in slight differences in output treatment and availability. Both simulations use "reduced cloud base mass flux" (RCBMF) which has the shallow convection scheme fully active and the deep convection scheme weakly active (with a strongly reduced cloud base mass flux), in agreement with 9 km nextGEMS production simulations.
+  #         * The simulation has the same physics as the coupled nextGEMS production simulations.
+  #         * The simulation is closely aligned with the EERIE project and the AMIP simulations done there (1980-2023, 1 member at 9 km and 10 members at 28 km). Those runs use "deep-on" convection, not "RCBMF". A 6-month twin simulation at 4.4 km [exists](https://discover.dkrz.de/external/stac2.cloud.dkrz.de/fastapi/collections/eerie-eerie-ecmf-ifs-amip-tco2559-hist-v20240901) with "deep-on" settings.
+
+  #       **Processing**:
+  #         * This dataset uses default IFS naming of variables. Please refer to the [parameter database](https://codes.ecmwf.int/grib/param-db/) for more information on the available variables.
+  #         * Output is written to HEALPix H1024 (zoom level 10, about 6 km resolution), and to H128 (level 7, about 50 km resolution). The remapping to healpix was done with linear interpolation (different to ifs_tco3999_rcbmf and the coupled tco3999 runs, which use conservative interpolation for H128 2D variables). Output is available hourly (PT1H), daily means (P1D) and monthly means (P1M). Daily and monthly means also include some min/max fields, these are compute on the model timestep. PT1H includes instantaneous fields (valid at the given timestep) and accumulated fields (fluxes, e.g. precipitation) accumulated over the 1-hour interval *preceding* the given timestep (precipitation at 12:00 has been accumulated between 11:00 and 12:00). Daily and monthly means have a timestep at the center of the time interval (e.g. daily means are written at 12:00).
+  #     license: Creative Commons CC BY 4.0. https://creativecommons.org/licenses/by/4.0/
+  #     creator_name: Matthias Aengenheyster, Tobias Becker, Thomas Rackow, Xabier Pedruzo-Bagazgoitia
+  #     creator_email: matthias.aengenheyster@ecmwf.int, tobias.becker@ecmwf.int, thomas.rackow@ecmwf.int, xabier.pedruzo@ecmwf.int
+  #     source_id: IFS
+  #     simulation_id: RCBMF
+  #     time_start: 2020-01-01T00:00:00
+  #     time_end: 2021-03-01T00:00:00
+  #     references: https://doi.org/10.5194/gmd-18-33-2025, https://www.ecmwf.int/en/forecasts/documentation-and-support/changes-ecmwf-model, 
+  #     institution: European Centre for Medium-Range Weather Forecasts (ECMWF)
+  #     citation: Rackow, T., Pedruzo-Bagazgoitia, X., Becker, T., Milinski, S., Sandu, I., Aguridan, R., Bechtold, P., Beyer, S., Bidlot, J., Boussetta, S., Deconinck, W., Diamantakis, M., Dueben, P., Dutra, E., Forbes, R., Ghosh, R., Goessling, H. F., Hadade, I., Hegewald, J., Jung, T., Keeley, S., Kluft, L., Koldunov, N., Koldunov, A., Kölling, T., Kousal, J., Kühnlein, C., Maciel, P., Mogensen, K., Quintino, T., Polichtchouk, I., Reuter, B., Sármány, D., Scholz, P., Sidorenko, D., Streffing, J., Sützl, B., Takasuka, D., Tietsche, S., Valentini, M., Vannière, B., Wedi, N., Zampieri, L., and Ziemen, F. - Multi-year simulations at kilometre scale with the Integrated Forecasting System coupled to FESOM2.5 and NEMOv3.4, Geosci. Model Dev., 18, 33–69, https://doi.org/10.5194/gmd-18-33-2025, 2025.
+  ifs_tco3999-ng5_rcbmf:
+    args:
+      chunks: auto
+      consolidated: true
+      urlpath: >
+        {% with time_map = {'PT1H': 'hourly', 'P1M': 'monthly'}, zoom_map = {7: '128', 9: '512', 10: '1024', 11: '2048'} -%}
+        https://eerie.cloud.dkrz.de/datasets/nextgems.IFS_2.8-FESOM_5-production.{{ dim }}_{{ time_map[time] }}_healpix{{ zoom_map[zoom] }}/kerchunk
+        {%- endwith %}
+    driver: zarr
+    parameters:
+      dim:
+        allowed:
+        - 2D
+        - 3D
+        default: 2D
+        description: 2D and 3D version of the dataset
+        type: str
+      time:
+        allowed:
+        - PT1H
+        - P1M
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+        - 7
+        - 11
+        default: 7
+        description: zoom level of the dataset
+        type: int
+    metadata:
+      title: IFS-FESOM 2.8km simulation (RCBMF), original IFS variables
+      summary: |
+        Coupled simulation at 2.8 km resolution, with reduced cloud base mass flux. Run for 1 year and 2 months, starting in 2020. (Online access via EERIE cloud).
+
+        **General**:
+          * The Integrated Forecasting System (IFS), developed at ECMWF, is a spectral-transform atmospheric model with two-time-level semi-implicit, semi-Lagrangian time stepping (Temperton et al., 2001; Hortal, 2002; Diamantakis and Váňa, 2021). It is coupled to other Earth system components (land, waves, ocean, sea ice).
+          * The global hackathon simulations at 2.8km are with the IFS-FESOM configuration (Rackow et al. 2025), coupled to the FESOM2 ocean-sea ice model.
+
+        **Simulation**:
+          * This is one of two new IFS simulations at 2.8 km resolution, coupled to FESOM 5 km. The simulations are started on 01.01.2020 and run for 14 months, ending on 01.03.2021. The two simulations differ in the treatment of deep convection. This simulation (RCBMF) has the shallow convection scheme fully active and the deep convection scheme weakly active (with a strongly reduced cloud base mass flux), in agreement with 9 km nextGEMS production simulations, while the second simulation (DEEPOFF; catalog entry *ifs_tco3999-ng5_deepoff*) only has the shallow convection scheme active and the deep convection scheme completely switched off.
+
+        **Processing**:
+          * This dataset uses default IFS naming of variables. Please refer to the [parameter database](https://codes.ecmwf.int/grib/param-db/) for more information on the available variables.
+          * There is a rechunked version of this dataset available online, which may increase performance for some tasks ( *ifs_tco3999-ng5_rcbmf_cf* ). Note that this dataset largely uses CF naming.
+          * Output is written to HEALPix H2048 (zoom level 11, about 3 km resolution), and to H128 (level 7, about 50 km resolution). The remapping to zoom level 7 used conservative interpolation for the 2D variables and linear interpolation for the 3D variables. Remapping to the high-resolution H2048 (level 11) was also done with linear interpolation. Output is available hourly (PT1H). In addition, we also provide monthly means (P1M), but only for those variables that are accumulated in time (all fluxes, e.g. radiation, precipitation, etc.).
+      license: Creative Commons CC BY 4.0. https://creativecommons.org/licenses/by/4.0/
+      creator_name: Tobias Becker, Thomas Rackow, Xabier Pedruzo-Bagazgoitia
+      creator_email: tobias.becker@ecmwf.int, thomas.rackow@ecmwf.int, xabier.pedruzo@ecmwf.int
+      source_id: IFS-FESOM
+      simulation_id: RCBMF
+      time_start: 2020-01-01T00:00:00
+      time_end: 2021-03-01T00:00:00
+      references: https://doi.org/10.5194/gmd-18-33-2025, https://www.ecmwf.int/en/forecasts/documentation-and-support/changes-ecmwf-model, https://fesom.de
+      institution: European Centre for Medium-Range Weather Forecasts (ECMWF)
+      citation: Rackow, T., Pedruzo-Bagazgoitia, X., Becker, T., Milinski, S., Sandu, I., Aguridan, R., Bechtold, P., Beyer, S., Bidlot, J., Boussetta, S., Deconinck, W., Diamantakis, M., Dueben, P., Dutra, E., Forbes, R., Ghosh, R., Goessling, H. F., Hadade, I., Hegewald, J., Jung, T., Keeley, S., Kluft, L., Koldunov, N., Koldunov, A., Kölling, T., Kousal, J., Kühnlein, C., Maciel, P., Mogensen, K., Quintino, T., Polichtchouk, I., Reuter, B., Sármány, D., Scholz, P., Sidorenko, D., Streffing, J., Sützl, B., Takasuka, D., Tietsche, S., Valentini, M., Vannière, B., Wedi, N., Zampieri, L., and Ziemen, F. - Multi-year simulations at kilometre scale with the Integrated Forecasting System coupled to FESOM2.5 and NEMOv3.4, Geosci. Model Dev., 18, 33–69, https://doi.org/10.5194/gmd-18-33-2025, 2025.
+  ifs_tco3999-ng5_deepoff:
+    args:
+      chunks: auto
+      consolidated: true
+      urlpath: >
+        {% with time_map = {'PT1H': 'hourly', 'P1M': 'monthly'}, zoom_map = {7: '128', 9: '512', 10: '1024', 11: '2048'} -%}
+        https://eerie.cloud.dkrz.de/datasets/nextgems.IFS_2.8-FESOM_5-production-deep-off.{{ dim }}_{{ time_map[time] }}_healpix{{ zoom_map[zoom] }}/kerchunk
+        {%- endwith %}
+    driver: zarr
+    parameters:
+      dim:
+        allowed:
+        - 2D
+        - 3D
+        default: 2D
+        description: 2D and 3D version of the dataset
+        type: str
+      time:
+        allowed:
+        - PT1H
+        - P1M
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+        - 7
+        - 11
+        default: 7
+        description: zoom level of the dataset
+        type: int
+    metadata:
+      title: IFS-FESOM 2.8km simulation (DEEPOFF), original IFS variables
+      summary: |
+        Coupled simulation at 2.8 km resolution, with deep convection parameterization switched off. Run for 1 year and 2 months, starting in 2020. (Online access via EERIE cloud).
+
+        **General**:
+          * The Integrated Forecasting System (IFS), developed at ECMWF, is a spectral-transform atmospheric model with two-time-level semi-implicit, semi-Lagrangian time stepping (Temperton et al., 2001; Hortal, 2002; Diamantakis and Váňa, 2021). It is coupled to other Earth system components (land, waves, ocean, sea ice).
+          * The global hackathon simulations at 2.8km are with the IFS-FESOM configuration (Rackow et al. 2025), coupled to the FESOM2 ocean-sea ice model.
+
+        **Simulation**:
+          * This is one of two new IFS simulations at 2.8 km resolution, coupled to FESOM 5 km. The simulations are started on 01.01.2020 and run for 14 months, ending on 01.03.2021. The two simulations differ in the treatment of deep convection. This simulation (DEEPOFF) only has the shallow convection scheme active and the deep convection scheme switched off. The second simulation (RCBMF; catalog entry *ifs_tco3999-ng5_rcbmf* with standard IFS variables, and *ifs_tco3999-ng5_rcbmf_cf* the rechunked version following CF naming) has the shallow convection scheme fully active and the deep convection scheme weakly active (with a strongly reduced cloud base mass flux), in agreement with 9 km nextGEMS production simulations.
+
+        **Processing**:
+          * This dataset uses default IFS naming of variables. Please refer to the [parameter database](https://codes.ecmwf.int/grib/param-db/) for more information on the available variables.
+          * Output is written to HEALPix H2048 (zoom level 11, about 3 km resolution), and to H128 (level 7, about 50 km resolution). The remapping to zoom level 7 used conservative interpolation for the 2D variables and linear interpolation for the 3D variables. Remapping to the high-resolution H2048 (level 11) was also done with linear interpolation. Output is available hourly (PT1H). In addition, we also provide monthly means (P1M), but only for those variables that are accumulated in time (all fluxes, e.g. radiation, precipitation, etc.).
+      license: Creative Commons CC BY 4.0. https://creativecommons.org/licenses/by/4.0/
+      creator_name: Tobias Becker, Thomas Rackow, Xabier Pedruzo-Bagazgoitia
+      creator_email: tobias.becker@ecmwf.int, thomas.rackow@ecmwf.int, xabier.pedruzo@ecmwf.int
+      source_id: IFS-FESOM
+      simulation_id: DEEPOFF
+      time_start: 2020-01-01T00:00:00
+      time_end: 2021-03-01T00:00:00
+      references: https://doi.org/10.5194/gmd-18-33-2025, https://www.ecmwf.int/en/forecasts/documentation-and-support/changes-ecmwf-model, https://fesom.de
+      institution: European Centre for Medium-Range Weather Forecasts (ECMWF)
+      citation: Rackow, T., Pedruzo-Bagazgoitia, X., Becker, T., Milinski, S., Sandu, I., Aguridan, R., Bechtold, P., Beyer, S., Bidlot, J., Boussetta, S., Deconinck, W., Diamantakis, M., Dueben, P., Dutra, E., Forbes, R., Ghosh, R., Goessling, H. F., Hadade, I., Hegewald, J., Jung, T., Keeley, S., Kluft, L., Koldunov, N., Koldunov, A., Kölling, T., Kousal, J., Kühnlein, C., Maciel, P., Mogensen, K., Quintino, T., Polichtchouk, I., Reuter, B., Sármány, D., Scholz, P., Sidorenko, D., Streffing, J., Sützl, B., Takasuka, D., Tietsche, S., Valentini, M., Vannière, B., Wedi, N., Zampieri, L., and Ziemen, F. - Multi-year simulations at kilometre scale with the Integrated Forecasting System coupled to FESOM2.5 and NEMOv3.4, Geosci. Model Dev., 18, 33–69, https://doi.org/10.5194/gmd-18-33-2025, 2025.
   um_glm_n1280_GAL9:
     args:
       chunks: null
       consolidated: true
-      urlpath: https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/dev/v5/glm.n1280_GAL9_nest/um.{{ time }}.hp_z{{ zoom }}.zarr
+      urlpath:
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/dev/v5/glm.n1280_GAL9_nest/um.{{ time }}.hp_z{{ zoom }}.zarr
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/dev/v5/glm.n1280_GAL9_nest/um.static.hp_z{{ zoom }}.zarr
     driver: zarr
     parameters:
       time:
@@ -129,15 +552,7 @@ sources:
         default: 8
         description: zoom resolution of the dataset
         type: int
-    metadata:
-      project: global_hackathon
-      experiment_id: hackathon
-      experiment_index: 1
-      source_id: Unified_Model
-      simulation_id: N1280_GAL9
-      region: glm
-      resolution: 10km
-      configuration: GAL9
+    # metadata is in the UK catalog
   um_CTC_km4p4_RAL3P3_n1280_GAL9_nest:
     args:
       chunks: null
@@ -168,19 +583,7 @@ sources:
         default: 8
         description: zoom resolution of the dataset
         type: int
-    metadata:
-      project: global_hackathon
-      experiment_id: hackathon
-      experiment_index: 1
-      source_id: Unified_Model
-      simulation_id: CTC_km4p4_RAL3P3_n1280_GAL9_nest
-      geospatial_lon_min: 0.00
-      geospatial_lon_max: 360.00
-      geospatial_lat_min: -40.00
-      geospatial_lat_max: 26.00
-      region: CTC
-      resolution: 4.4km
-      configuration: RAL3p3
+    # metadata is in the UK catalog
   um_SAmer_km4p4_RAL3P3_n1280_GAL9_nest:
     args:
       chunks: null
@@ -211,19 +614,7 @@ sources:
         default: 8
         description: zoom resolution of the dataset
         type: int
-    metadata:
-      project: global_hackathon
-      experiment_id: hackathon
-      experiment_index: 1
-      source_id: Unified_Model
-      simulation_id: SAmer_km4p4_RAL3P3_n1280_GAL9_nest
-      geospatial_lon_min: 274.00
-      geospatial_lon_max: 333.96
-      geospatial_lat_min: -30.00
-      geospatial_lat_max: 13.96
-      region: SAmer
-      resolution: 4.4km
-      configuration: RAL3p3
+    # metadata is in the UK catalog
   um_Africa_km4p4_RAL3P3_n1280_GAL9_nest:
     args:
       chunks: null
@@ -254,19 +645,7 @@ sources:
         default: 8
         description: zoom resolution of the dataset
         type: int
-    metadata:
-      project: global_hackathon
-      experiment_id: hackathon
-      experiment_index: 1
-      source_id: Unified_Model
-      simulation_id: Africa_km4p4_RAL3P3_n1280_GAL9_nest
-      geospatial_lon_min: 340.00
-      geospatial_lon_max: 53.96
-      geospatial_lat_min: -40.00
-      geospatial_lat_max: 25.96
-      region: Africa
-      resolution: 4.4km
-      configuration: RAL3p3
+    # metadata is in the UK catalog
   um_SEA_km4p4_RAL3P3_n1280_GAL9_nest:
     args:
       chunks: null
@@ -297,24 +676,14 @@ sources:
         default: 8
         description: zoom resolution of the dataset
         type: int
-    metadata:
-      project: global_hackathon
-      experiment_id: hackathon
-      experiment_index: 1
-      source_id: Unified_Model
-      simulation_id: SEA_km4p4_RAL3P3_n1280_GAL9_nest
-      geospatial_lon_min: 90.00
-      geospatial_lon_max: 153.96
-      geospatial_lat_min: -18.00
-      geospatial_lat_max: 25.96
-      region: SEA
-      resolution: 4.4km
-      configuration: RAL3p3
+    # metadata is in the UK catalog
   um_glm_n2560_RAL3p3:
     args:
       chunks: null
       consolidated: true
-      urlpath: https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/dev/v5/glm.n2560_RAL3p3/um.{{ time }}.hp_z{{ zoom }}.zarr
+      urlpath:
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/dev/v5/glm.n2560_RAL3p3/um.{{ time }}.hp_z{{ zoom }}.zarr
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/dev/v5/glm.n2560_RAL3p3/um.static.hp_z{{ zoom }}.zarr
     driver: zarr
     parameters:
       time:
@@ -340,20 +709,14 @@ sources:
         default: 8
         description: zoom resolution of the dataset
         type: int
-    metadata:
-      project: global_hackathon
-      experiment_id: hackathon
-      experiment_index: 2
-      source_id: Unified_Model
-      simulation_id: N2560_RAL3p3
-      region: glm
-      resolution: 5km
-      configuration: RAL3p3
+    # metadata is in the UK catalog
   um_glm_n1280_CoMA9_TBv1p2:
     args:
       chunks: null
       consolidated: true
-      urlpath: https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/dev/v5/glm.n1280_CoMA9/um.{{ time }}.hp_z{{ zoom }}.zarr
+      urlpath:
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/dev/v5/glm.n1280_CoMA9/um.{{ time }}.hp_z{{ zoom }}.zarr
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/dev/v5/glm.n1280_CoMA9/um.static.hp_z{{ zoom }}.zarr
     driver: zarr
     parameters:
       time:
@@ -378,12 +741,136 @@ sources:
         default: 8
         description: zoom resolution of the dataset
         type: int
+    # metadata is in the UK catalog
+  nicam_gl11:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: >
+        {% with time_map = {'PT1H': '1h', 'PT3H': '3h', 'PT6H' : '6h'} ,  dims_map = {'PT1H': '2d', 'PT3H': '2d', 'PT6H' : '3d'}  -%}
+        https://nowake.nicam.jp/files/healpix/NICAM_{{ dims_map[time] }}{{ time_map[time] }}_z{{ zoom }}.zarr
+        {%- endwith %}
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+        - PT1H
+        - PT3H
+        - PT6H
+        default: PT3H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+        - 9
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        - 0
+        default: 0
+        description: zoom resolution of the dataset
+        type: int
+  scream-dkrz:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: https://s3.eu-dkrz-1.dkrz.cloud/wrcp-hackathon/data/SCREAM/scream_{{ time }}_z{{ zoom }}_v7.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+        - P1D
+        - PT1H
+        - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+        - 10
+        - 9
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        - 0
+        default: 2
+        description: zoom resolution of the dataset
+        type: int
     metadata:
       project: global_hackathon
-      experiment_id: hackathon
-      experiment_index: 3
-      source_id: Unified_Model
-      simulation_id: N1280_CoMA9_TBv1p2
-      region: glm
-      resolution: 10km
-      configuration: CoMA9
+      experiment_id: dyamond3
+      source_id: SCREAM
+      simulation_id: cess-control.ne1024pg2_ne1024pg2.F2010-SCREAMv1.cess-oct2
+      time_start: 2019-08-01T00:00:00
+      time_end: 2020-09-01T00:00:00
+      title: SCREAM CESS experiment subset for Hamburg node
+      summary: |
+        Subset of what is available via Globus.
+        Each entry merges existing datasets as follows:
+         
+        scream_PT1H (Resolution 0-10):
+          * scream2D_hrly_pr_hp*_v7
+          * scream2D_hrly_rlut_hp*_v7
+        scream_PT3H (Resolution 0-8): 
+          * scream2D_ne120_all_hp*_v7
+          * scream3D_ne120_hus_hp*_v7
+        scream_P1D (Resolution 0-8):
+          * scream_lnd_mrso_hp*_v4
+          * scream_lnd_swe_hp*_v4
+
+      references: https://github.com/digital-earths-global-hackathon/hk25/blob/main/content/models/scream.md
+      reprocessed_by: Manuel Reis
+      creator_name: Andrew Gettelman & Manuel Reis
+      creator_email:
+       - andrew.gettelman@pnnl.gov
+       - reis@dkrz.de
+      institution: U.S. Department of Energy, E3SM Project
+    # metadata is in the NERSC catalog
+  casesm2_10km_nocumulus:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: https://s3.eu-dkrz-1.dkrz.cloud/wrcp-hackathon/data/CAS-ESM2/CAS-ESM2_10km_nocumulus_{{ time }}_z{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+        - PT1H
+        - PT3H
+        - PT6H
+        default: PT6H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+        - 9
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        - 0
+        default: 9
+        description: zoom resolution of the dataset
+        type: int
+ # metadata in CN node
+  tracking-d3hp003:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: https://s3.eu-dkrz-1.dkrz.cloud/wrcp-hackathon/data/ICON/tracking/mcstracking/mcs_mask_hp9_20200102.0000_20201231.2330.zarr
+    driver: zarr
+    description: Tracking for ICON d3hp003

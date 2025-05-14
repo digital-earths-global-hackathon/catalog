@@ -164,7 +164,7 @@ class SimpleCat:
 
 
 def parse_source(source: dict, path: Path) -> SimpleCat | DataSource:
-    assert source["driver"] in ["yaml_file_cat", "zarr"]
+    assert source["driver"] in ["yaml_file_cat", "zarr", "netcdf"]
     if source["driver"] == "yaml_file_cat":
         return read_cat(
             Path(Template(source["args"]["path"]).render(CATALOG_DIR=str(path.parent)))
