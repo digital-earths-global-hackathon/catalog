@@ -120,6 +120,55 @@
                 margin: 0;
                 margin-bottom: .2em;
             }
+
+            div.more {
+                max-height: 10em;
+                overflow: scroll;
+
+                --bgRGB: var(--bg-color);
+                --bg: var(--bg-color);
+                --bgTrans: transparent;
+
+                --shadow: color-mix(in srgb, var(--fg-color) 25%, transparent);
+
+                max-height: 200px;
+                overflow: auto;
+
+                background:
+                    /* Shadow Cover TOP */
+                    linear-gradient(
+                    var(--bg) 30%,
+                    var(--bgTrans)
+                    ) center top,
+
+                    /* Shadow Cover BOTTOM */
+                    linear-gradient(
+                    var(--bgTrans),
+                    var(--bg) 70%
+                    ) center bottom,
+
+                    /* Shadow TOP */
+                    radial-gradient(
+                    farthest-side at 50% 0,
+                    var(--shadow),
+                    rgba(0, 0, 0, 0)
+                    ) center top,
+
+                    /* Shadow BOTTOM */
+                    radial-gradient(
+                    farthest-side at 50% 100%,
+                    var(--shadow),
+                    rgba(0, 0, 0, 0)
+                    ) center bottom;
+
+                background-repeat: no-repeat;
+                background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+                background-attachment: local, local, scroll, scroll;
+            }
+
+            img.inline {
+                height: 1em;
+            }
         </style>
     </head>
     <body>
@@ -155,9 +204,13 @@
 
         <h2>Datasets</h2>
         <ul class="dslist">
-            {% for id, mlds in mldss.items() %}
+            {% for id, mlds in mldss | dictsort (true) %}
             <li>
-                <h3 class="id">{{ id }} <span class="smaller">{{ mlds | default_params }}</span></h3>
+                <h3 class="id">{{ id }} <span class="smaller">{{ mlds | default_params }}</span>
+                    {% if gridlook_url(mlds) %}
+                    <a href="https://gridlook.pages.dev/#{{ mlds | gridlook_url }}"><img class="inline" src="gridlook.svg" /></a>
+                    {% endif %}
+                </h3>
                 <table class="compact">
                     {% for name, allowed in max_allowed_params(mlds).items() %}
                     <tr><td class="id">{{ name }}:</td><td class="code">{{ allowed | raw_list }}</td></tr>
@@ -166,6 +219,7 @@
                 {% if mlds.metadata.title %}
                 <h4>{{ mlds.metadata.title }}</h4>
                 {% endif %}
+                <div class="more">
                 {% if mlds.metadata.summary %}
                 <div class="summary">
                 {{ mlds.metadata.summary | markdown }}
@@ -185,6 +239,7 @@
                     {% endfor %}
                 </ul>
                 {% endif %}
+                </div>
                 <div class="providers"><ul>{% for zone in sorted(mlds.raw) %}<li>{{ zone }}</li>{% endfor %}</ul></div>
                 <div class="zones"><ul>{% for zone in sorted(mlds.available_at) %}<li>{{ zone }}</li>{% endfor %}</ul></div>
             </li>

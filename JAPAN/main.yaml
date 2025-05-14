@@ -1,0 +1,122 @@
+sources:
+  nicam_gl11:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: >
+        {% with time_map = {'PT1H': '1h', 'PT3H': '3h', 'PT6H' : '6h'} ,  dims_map = {'PT1H': '2d', 'PT3H': '2d', 'PT6H' : '3d'}  -%}
+        /large/sftpgo/data/NICAM/hackathon/healpix/NICAM_{{ dims_map[time] }}{{ time_map[time] }}_z{{ zoom }}.zarr
+        {%- endwith %}
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+        - PT1H
+        - PT3H
+        - PT6H
+        default: PT3H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+        - 9
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        - 0
+        default: 0
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      project: global_hackathon
+      experiment_id: atm_only
+      source_id: NICAM
+      simulation_id: nicamdna
+      time_start: 2020-03-01T00:00:00
+      time_end: 2021-03-01T00:00:00
+      title: NICAM 3.5 km simulation
+      summary: |
+        Atmosphere-only simulation at 3.5 km resolution. One-year data from 10-year simulations starting in 2011.
+
+        **Simulation**
+          * Horizontal grid: Glevel-11, 41,943,042 control volumes (hexagon/pentagon), average interaval (dx) ~ 3.5 km
+          * Vertical grid: 78 full levels with the model top of about 50 km
+          * Initial conditions: From ERA-Interim for date 2011-01-01T00:00:00Z
+          * External data:
+            * SST and SIC predicted by a slab-ocean model (mixed layer depth 15m), nudged to daily mean fields from OSTIA with a 7-day relaxation time
+            * Greenhouse gases as daily values, following HighResMIP protocol
+            * O3 prescribed from monthly fields, following HighResMIP protocol
+            * Greenhouse gases and O3 With SSP585 scenario after 2015, following HighResMIP protocol
+
+        **Processing**
+          * Fields were remapped from the 3.5 km NICAM to the Healpix grid with conservative remapping.
+          * 2d1h fields have instantaneous values except for precipitation (pr).
+          * 2d3h fields have mean values calculated from each simulation timestep values.
+          * 3d6h fields are generated on 25 pressure levels as instantaneous values starting at 6-hourly interval.
+
+      references: https://doi.org/10.1029/2023MS003701
+  nicam_gl11_latlon:
+    args:
+      urlpath: >
+        {% with time_map = {'PT1H': '1h', 'PT3H': '3h', 'PT6H' : '6h'} ,  dims_map = {'PT1H': '2d', 'PT3H': '2d', 'PT6H' : '3d'}  -%}
+        /large/sftpgo/data/NICAM/hackathon/latlon/0.25deg/{{ dims_map[time] }}{{ time_map[time] }}/*.nc
+        {%- endwith %}
+    driver: netcdf
+    parameters:
+      time:
+        allowed:
+        - PT3H
+        - PT6H
+        default: PT3H
+        description: time resolution of the dataset
+        type: str
+    metadata:
+      title: NICAM 3.5 km simulation
+      summary: |
+        This is the data from `nicam_gl11`, but on a lat/lon grid.
+  nicam_220m_test:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: /work/matsugishi/220m/data_healpix_{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      zoom:
+        allowed:
+          - 15
+          - 14
+          - 13
+          - 12
+          - 11
+          - 10
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 0
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+        project: global_hackathon
+        experiment_id: atm_only
+        source_id: NICAM
+        simulation_id: nicamgles
+        time_start: 2016-08-05T04:00:00
+        time_end: 2016-08-05T04:00:00
+        title: NICAM 220 m simulation
+        summary: |
+          Atmosphere-only simulation at 220 m resolution.
+          **Simulation**
+            * Horizontal grid: Glevel-15, 10737418240 control volumes (hexagon/pentagon), average interaval (dx) ~ 220 km
+            * Vertical grid: 78 full levels with the model top of about 50 km

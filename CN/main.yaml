@@ -1,0 +1,116 @@
+sources:
+  casesm2_10km_cumulus:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: >
+        {% with time_map = {'PT3H': '3h', 'PT1H': '1h', 'PT6H': '6h'}, vert_map = {'PT3H': '2d', 'PT1H': '2d', 'PT6H': '3d'} -%}
+        /data2/share/florain/CAS-ESM2_10km_cumulus_{{ vert_map[time] }}{{ time_map[time] }}_z{{ zoom }}.zarr
+        {%- endwith %}
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+        - PT1H
+        - PT3H
+        - PT6H
+        default: PT6H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+        - 9
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        - 0
+        default: 9
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      source_id: CAS-ESM2.0
+      simulation_id: cumulus
+      time_start: 2020-01-01T00:00:00
+      time_end: 2021-03-01T00:00:00
+      title: CAS-ESM 10 km simulation
+      summary: |
+        CAS-ESM2 atmosphere-only simulation at 10 km resolution with deep convection. Run for 1 year and 1 month and 11 days starting in 20th Jan. 2020.
+
+        Simulation:
+        * Horizontal grid: lat-lon, 1801*3600
+        * Vertical grid: 35 full levels 
+        * Initial conditions: From IFS for date 2020-01-20T00:00:00Z
+        * Resolution: 
+        * Atmosphere data at HEALPix level 9.
+        * Land data at HEALPix level 9.
+        * 2d3h contains selected 2D fields every 3 hours.
+        * 2d1h contains selected 2D fields every hour.
+        * 3d6h contains selected 3D fields every 6 hours.
+
+        Processing
+        * Fields were remapped to HEALPix level 9 using nearest-neighbor interpolation.
+      citation: Zhang, H., Zhang, M., Jin, J., Fei, K., Ji, D., Wu, C., et al., 2020. Description and climate simulation performance of CAS-ESM version 2. Journal of Advances in Modeling Earth Systems, 12, e2020MS002210. https://doi.org/10.1029/2020MS002210.
+      reference: https://doi.org/10.1029/2020MS002210
+  casesm2_10km_nocumulus:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: >
+        {% with time_map = {'PT3H': '3h', 'PT1H': '1h', 'PT6H': '6h'}, vert_map = {'PT3H': '2d', 'PT1H': '2d', 'PT6H': '3d'} -%}
+        /data2/share/florain/CAS-ESM2_10km_nocumulus_{{ vert_map[time] }}{{ time_map[time] }}_z{{ zoom }}.zarr
+        {%- endwith %}
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+        - PT1H
+        - PT3H
+        - PT6H
+        default: PT6H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+        - 9
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        - 0
+        default: 9
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      source_id: CAS-ESM2.0
+      simulation_id: nocumulus
+      time_start: 2020-01-01T00:00:00
+      time_end: 2021-03-01T00:00:00
+      title: CAS-ESM 10 km simulation
+      summary: |
+        CAS-ESM2 atmosphere-only simulation at 10 km resolution with deep convection off. Run for 1 year and 1 month and 11 days starting in 20th Jan. 2020.
+
+        Simulation:
+        * Horizontal grid: lat-lon, 1801*3600
+        * Vertical grid: 35 full levels 
+        * Initial conditions: From IFS for date 2020-01-20T00:00:00Z
+        * Resolution: 
+        * Atmosphere data at HEALPix level 9.
+        * Land data at HEALPix level 9.
+        * 2d3h contains selected 2D fields every 3 hours.
+        * 2d1h contains selected 2D fields every hour.
+        * 3d6h contains selected 3D fields every 6 hours.
+
+        Processing
+        * Fields were remapped to HEALPix level 9 using nearest-neighbor interpolation.
+      references: https://doi.org/10.1029/2020MS002210
+      citation: Zhang, H., Zhang, M., Jin, J., Fei, K., Ji, D., Wu, C., et al., 2020. Description and climate simulation performance of CAS-ESM version 2. Journal of Advances in Modeling Earth Systems, 12, e2020MS002210. https://doi.org/10.1029/2020MS002210.
+

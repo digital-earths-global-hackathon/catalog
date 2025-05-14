@@ -1,3 +1,4 @@
+
 online:
   - online
 EU:
@@ -15,3 +16,10 @@ UK:
 Aus:
   - online
   - Aus
+JAPAN:
+  - online
+  - JAPAN
+
+CN:
+  - online
+  - CN

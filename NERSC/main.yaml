@@ -29,6 +29,21 @@ sources:
       simulation_id: cess-control.ne1024pg2_ne1024pg2.F2010-SCREAMv1.cess-oct2
       time_start: 2019-08-01T00:00:00
       time_end: 2020-09-01T00:00:00
+      title: SCREAM CESS experiment 2D Hourly instantaneous Fields
+      summary: |
+        2-D Hourly instantaneous Fields from the SCREAM CESS experiment.
+    
+        **Resolutions**
+          * Atmosphere data at levels 0-10 for 2D fields. 
+
+        **Processing**
+          * Fields were remapped to HEALPix level 10 using Delaunay triangulation. 
+          * Lower levels were generated from this using coarse-graining.
+      references: https://github.com/digital-earths-global-hackathon/hk25/blob/main/content/models/scream.md
+      creator_name: Andrew Gettelman
+      creator_email: andrew.gettelman@pnnl.gov
+      institution: U.S. Department of Energy, E3SM Project
+
   scream_ne120:
     args:
       chunks: null
@@ -57,6 +72,67 @@ sources:
       simulation_id: cess-control.ne1024pg2_ne1024pg2.F2010-SCREAMv1.cess-oct2
       time_start: 2019-08-01T00:00:00
       time_end: 2020-09-01T00:00:00
+      title: SCREAM CESS experiment 3hrly Fields from 25km data
+      summary: |
+        2D and 3D 3hourly aerage Fields from the SCREAM CESS experiment (at 3.5km resolution).)
+    
+        **Resolutions**
+          *  Levels 0-8 for 2D fields. 
+          *  Levels 0-8 for 3D fields.
+
+        **Processing**
+          * Fields were saved as coarse (25km, ne120) data
+          * Then remapped to HEALPix level 8 using Delaunay triangulation. 
+          * Lower levels were generated from this using coarse-graining.
+      references: https://github.com/digital-earths-global-hackathon/hk25/blob/main/content/models/scream.md
+      creator_name: Andrew Gettelman
+      creator_email: andrew.gettelman@pnnl.gov
+      institution: U.S. Department of Energy, E3SM Project
+  
+  scream_ne120_inst:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: /global/cfs/cdirs/m4581/gsharing/hackathon/scream-cess-healpix/scream*_ne120_inst_*_hp{{ zoom }}_v1.zarr
+    driver: zarr
+    parameters:
+      zoom:
+        allowed:
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        - 0
+        default: 2
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      project: global_hackathon
+      experiment_id: dyamond3
+      source_id: SCREAM
+      simulation_id: cess-control.ne1024pg2_ne1024pg2.F2010-SCREAMv1.cess-oct2
+      time_start: 2019-08-01T00:00:00
+      time_end: 2020-09-01T00:00:00
+      title: SCREAM CESS experiment 2D 3hrly instantaneous Fields
+      summary: |
+        2-D 3-Hourly instantaneous Fields from the SCREAM CESS experiment.
+    
+        **Resolutions**
+          * Atmosphere data at levels 0-8 for 2D fields. 
+
+        **Processing**
+          * Fields were saved as coarse (25km, ne120) data
+          * Fields were remapped to HEALPix level 8 using nearest-neighbor interpolation. 
+          * Lower levels were generated from this using coarse-graining.
+      references: https://github.com/digital-earths-global-hackathon/hk25/blob/main/content/models/scream.md
+      creator_name: Andrew Gettelman
+      creator_email: andrew.gettelman@pnnl.gov
+      institution: U.S. Department of Energy, E3SM Project
+
   scream_lnd:
     args:
       chunks: null
@@ -85,3 +161,206 @@ sources:
       simulation_id: cess-control.ne1024pg2_ne1024pg2.F2010-SCREAMv1.cess-oct2
       time_start: 2019-08-01T00:00:00
       time_end: 2020-09-01T00:00:00
+      title: SCREAM CESS experiment 3hrly Fields from 25km data
+      summary: |
+        2D daily average Fields from the SCREAM CESS experiment (at 3.5km resolution).)
+    
+        **Resolutions**
+          *  Levels 0-8 for 2D fields. 
+
+        **Processing**
+          * Fields were saved as coarse (25km, ne120) data
+          * Then remapped to HEALPix level 8 using Delaunay triangulation. 
+          * Lower levels were generated from this using coarse-graining.
+      references: https://github.com/digital-earths-global-hackathon/hk25/blob/main/content/models/scream.md
+      creator_name: Andrew Gettelman
+      creator_email: andrew.gettelman@pnnl.gov
+      institution: U.S. Department of Energy, E3SM Project
+  
+  tracking:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: /global/cfs/cdirs/m4581/gsharing/hackathon/scream-cess-healpix/scream2D_hrly_*_hp{{ zoom }}_v1.zarr
+    driver: zarr
+    parameters:
+      zoom:
+        allowed:
+        - 10
+        - 9
+        - 8
+        - 7
+        - 6
+        default: 9
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      project: global_hackathon
+      time_end: 2020-09-01T00:00:00
+      title: Remapped Pixel-level feature tracking (MCS Mask) data to HEALPix grid
+      summary: |
+        2D hourly feature tracking data from the SCREAM CESS experiment.
+    
+        **Resolutions**
+          *  Levels 10-6 for 2D fields. 
+      creator_name: Zhe Feng 
+      creator_email: zhe.feng@pnnl.gov
+      institution: Pacific Northwest National Laboratory (PNNL)
+
+  IR_IMERG:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: /global/cfs/cdirs/m4581/gsharing/hackathon/OBS/IMERG_*_hp{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      zoom:
+        allowed:
+        - 9
+        default: 9
+        description: zoom resolution of the dataset
+        type: int
+  icon_d3hp003:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: /global/cfs/cdirs/m4581/gsharing/hackathon/ICON/d3hp003.zarr/{{ time }}_{{ time_method }}_z{{ zoom }}_atm
+    driver: zarr
+    description: Atmosphere-only simulation at 2.5 km resolution
+    parameters:
+      time:
+        allowed:
+        - PT1H
+        - PT3H
+        - PT6H
+        - P1D
+        default: P1D
+        description: time resolution of the dataset
+        type: str
+      time_method:
+        allowed:
+          - mean
+          - inst
+        default: mean
+        description: time subsetting method
+        type: str
+      zoom:
+        allowed:
+        - 11
+        - 10
+        - 9
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        - 0
+        default: 0
+        description: zoom resolution of the dataset
+        type: int
+    # metadata is in the EU Catalog
+
+  # um_glm_n2560_RAL3p3:
+  #   args:
+  #     chunks: null
+  #     consolidated: true
+  #     urlpath: /global/cfs/cdirs/m4581/gsharing/hackathon/UM/glm.n2560_RAL3p3/data.healpix.{{ time }}.z{{ zoom }}.zarr
+  #   driver: zarr
+  #   parameters:
+  #     time:
+  #       allowed:
+  #       - PT1H
+  #       - PT3H
+  #       default: PT1H
+  #       description: time resolution of the dataset
+  #       type: str
+  #     zoom:
+  #       allowed:
+  #       - 10
+  #       - 9
+  #       - 8
+  #       - 7
+  #       - 6
+  #       - 5
+  #       - 4
+  #       - 3
+  #       - 2
+  #       - 1
+  #       default: 8
+  #       description: zoom resolution of the dataset
+  #       type: int
+  #   # metadata is in the UK catalog
+
+  wrf_samerica:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: /global/cfs/cdirs/m4581/gsharing/hackathon/WRF_south_america/samerica_2020_*_hp{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      zoom:
+        allowed:
+        - 10
+        - 9
+        - 8
+        - 7
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+#    metadata in NCAR catalog
+
+  wrf_conus:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: /global/cfs/cdirs/m4581/gsharing/hackathon/WRF_conus404/conus404_2020_*_hp{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      zoom:
+        allowed:
+        - 10
+        - 9
+        - 8
+        - 7
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+#    metadata in NCAR catalog
+
+  nicam_gl11:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: >
+        {% with time_map = {'PT1H': '1h', 'PT3H': '3h', 'PT6H' : '6h'} ,  dims_map = {'PT1H': '2d', 'PT3H': '2d', 'PT6H' : '3d'}  -%}
+        /global/cfs/cdirs/m4581/gsharing/hackathon/NICAM/NICAM_{{ dims_map[time] }}{{ time_map[time] }}_z{{ zoom }}.zarr
+        {%- endwith %}
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+#        - PT1H
+        - PT3H
+        - PT6H
+        default: PT3H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+        - 9
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        - 0
+        default: 0
+        description: zoom resolution of the dataset
+        type: int
+#    metadata in JAPAN catalog

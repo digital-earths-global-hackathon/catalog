@@ -29,4 +29,13 @@ sources:
     driver: yaml_file_cat
     args:
         path: "{{CATALOG_DIR}}/Aus/main.yaml"
-
+  JAPAN:
+    description: online data sources
+    driver: yaml_file_cat
+    args:
+        path: "{{CATALOG_DIR}}/JAPAN/main.yaml"
+  CN:
+    description: earthlab data sources
+    driver: yaml_file_cat
+    args:
+        path: "{{CATALOG_DIR}}/CN/main.yaml"

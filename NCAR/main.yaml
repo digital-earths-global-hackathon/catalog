@@ -1,9 +1,157 @@
 sources:
+  mpas_dyamond3:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: /glade/derecho/scratch/digital-earths-hackathon/mpas_DYAMOND3/{{time}}/DYAMOND3_*_{{time}}_to_hp{{zoom}}.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+        - PT30M
+        - PT1H
+        - PT3H
+        - PT6H
+        default: PT1H
+        description: temporal resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+        - 10
+        - 9
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        default: 7
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      title: NCAR MPAS 3.75km simulation (partial DYAMOND3)
+      project: global_hackathon
+      experiment_id: dyamond3
+      source_id: MPAS
+      simulation_id: unknown
+      time_start: 2020-01-20T00:00:00
+      time_end: 2020-03-05T00:00:00
+      summary: |
+         Atmosphere-land simulation at 3.75km grid spacing. Run from 2020-01-20 to 2020-03-05.
+
+         **Resolutions**
+           * All data is available at HEALPix levels 1-10 for 2D fields
+
+         **Processing**
+           * Fields were remapped to HEALPix level 10 using Delaunay triangulation. 
+           * Lower levels were generated from this using coarse-graining.
+         
+      creator_name: Bill Skamarock
+      institution: NSF National Center for Atmospheric Research
+  mpas_dyamond2:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: /glade/derecho/scratch/digital-earths-hackathon/mpas_DYAMOND2/{{time}}/DYAMOND2_*_{{time}}_to_hp{{zoom}}.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+        - PT3H
+        default: PT3H
+        description: temporal resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+        - 10
+        - 9
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        default: 7
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      title: NCAR MPAS 3.75km simulation (partial DYAMOND2)
+      project: global_hackathon
+      experiment_id: dyamond2
+      source_id: MPAS
+      simulation_id: unknown
+      time_start: 2020-01-20T00:00:00
+      time_end: 2020-03-01T00:00:00
+      summary: |
+         Atmosphere-land simulation at 3.75km grid spacing. Run from 2020-01-20 to 2020-03-01.
+
+         **Resolutions**
+           * All data is available at HEALPix levels 1-10 for 2D fields
+
+         **Processing**
+           * Fields were remapped to HEALPix level 10 using Delaunay triangulation. 
+           * Lower levels were generated from this using coarse-graining.
+         
+      creator_name: Falko Judt
+      institution: NSF National Center for Atmospheric Research
+  mpas_dyamond1:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: /glade/derecho/scratch/digital-earths-hackathon/mpas_DYAMOND1/{{time}}/DYAMOND1_*_{{time}}_to_hp{{zoom}}.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+        - PT15M
+        - PT3H
+        default: PT3H
+        description: temporal resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+        - 10
+        - 9
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        default: 7
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      title: NCAR MPAS 3.75km simulation (partial DYAMOND1)
+      project: global_hackathon
+      experiment_id: dyamond1
+      source_id: MPAS
+      simulation_id: unknown
+      time_start: 2016-08-01T00:00:00
+      time_end: 2016-09-10T00:00:00
+      summary: |
+         Atmosphere-land simulation at 3.75km grid spacing. Run from 2016-08-01 to 2016-09-10.
+
+         **Resolutions**
+           * All data is available at HEALPix levels 1-10 for 2D fields
+
+         **Processing**
+           * Fields were remapped to HEALPix level 10 using Delaunay triangulation. 
+           * Lower levels were generated from this using coarse-graining.
+         
+      creator_name: Falko Judt
+      institution: NSF National Center for Atmospheric Research
   scream2D_hrly:
     args:
       chunks: null
       consolidated: true
-      urlpath: /glade/derecho/scratch/digital-earths-hackathon/e3sm/scream2D_hrly_*_hp{{ zoom }}_v7.zarr
+      urlpath: /glade/derecho/scratch/digital-earths-hackathon/e3sm/scream-cess-healpix/scream2D_hrly_*_hp{{ zoom }}_v7.zarr
     driver: zarr
     parameters:
       zoom:
@@ -22,18 +170,12 @@ sources:
         default: 2
         description: zoom resolution of the dataset
         type: int
-    metadata:
-      project: global_hackathon
-      experiment_id: dyamond3
-      source_id: SCREAM
-      simulation_id: cess-control.ne1024pg2_ne1024pg2.F2010-SCREAMv1.cess-oct2
-      time_start: 2019-08-01T00:00:00
-      time_end: 2020-09-01T00:00:00
+
   scream_ne120:
     args:
       chunks: null
       consolidated: true
-      urlpath: /glade/derecho/scratch/digital-earths-hackathon/e3sm/scream*_ne120_*_hp{{ zoom }}_v7.zarr
+      urlpath: /glade/derecho/scratch/digital-earths-hackathon/e3sm/scream-cess-healpix/scream*_ne120_*_hp{{ zoom }}_v7.zarr
     driver: zarr
     parameters:
       zoom:
@@ -50,13 +192,7 @@ sources:
         default: 2
         description: zoom resolution of the dataset
         type: int
-    metadata:
-      project: global_hackathon
-      experiment_id: dyamond3
-      source_id: SCREAM
-      simulation_id: cess-control.ne1024pg2_ne1024pg2.F2010-SCREAMv1.cess-oct2
-      time_start: 2019-08-01T00:00:00
-      time_end: 2020-09-01T00:00:00
+
   scream_lnd:
     args:
       chunks: null
@@ -78,10 +214,81 @@ sources:
         default: 2
         description: zoom resolution of the dataset
         type: int
+  
+  wrf_samerica:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: /glade/derecho/scratch/digital-earths-hackathon/samerica/healpix/samerica_2020_*_hp{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      zoom:
+        allowed:
+        - 10
+        - 9
+        - 8
+        - 7
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
     metadata:
       project: global_hackathon
-      experiment_id: dyamond3
-      source_id: SCREAM
-      simulation_id: cess-control.ne1024pg2_ne1024pg2.F2010-SCREAMv1.cess-oct2
-      time_start: 2019-08-01T00:00:00
-      time_end: 2020-09-01T00:00:00
+      experiment_id: WRFsamerica
+      source_id: WRF
+      simulation_id: https://rda.ucar.edu/datasets/d616000
+      time_start: 2020-01-01T00:00:00
+      time_end: 2020-12-31T23:00:00
+      title: WRF South America Experiment
+      summary: |
+        2D hourly average Fields from the WRF South America experiment. Simulations are 20-40 years long, but only 2020 stored here.
+    
+        **Resolutions**
+          *  Levels 0-10 for 2D fields. 
+
+        **Processing**
+          * Fields were sextracted from raw data
+          * Then remapped to HEALPix level 10 using Delaunay triangulation. 
+          * Lower levels were generated from this using coarse-graining.
+      references: https://rda.ucar.edu/datasets/d616000
+      creator_name: Andrew Gettelman, Julia Kukulies 
+      creator_email: andrew.gettelman@pnnl.gov, kukulies@ucar.edu
+      institution: National Center for Atmospheric Research (NCAR)
+
+  wrf_conus:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: /glade/derecho/scratch/digital-earths-hackathon/conus404/healpix/conus404_*_hp{{zoom}}.zarr
+    driver: zarr
+    parameters:
+      zoom:
+        allowed:
+        - 10
+        - 9
+        - 8
+        - 7
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      project: global_hackathon
+      experiment_id: WRFconus404
+      source_id: WRF
+      simulation_id: https://rda.ucar.edu/datasets/d559000/
+      time_start: 2000-01-01T00:00:00
+      time_end: 2020-12-31T23:00:00
+      title: WRF Coterminus US Experiment (CONUS404)
+      summary: |
+        2D hourly average Fields from the WRF (Weather and Research Forecast) CONUS404 experiment, i.e. regional down-scaled WRF model simulation at 4km grid spacing. Simulations are run from 1979-10-01 to 2022-09-30, but the HEALPix subdataset is available from 2000-10-01 to 2020-09-30.
+    
+        **Resolutions**
+          *  Seven 2D variables are available at HEALPix levels 7-10. 
+
+        **Processing**
+          * Fields were extracted from raw data
+          * Then remapped to HEALPix level 10 using Delaunay triangulation. 
+          * Lower levels were generated from this using coarse-graining.
+      references: https://rda.ucar.edu/datasets/d559000/
+      creator_name: Julia Kukulies 
+      creator_email: kukulies@ucar.edu
+      institution: National Center for Atmospheric Research (NCAR)

@@ -25,7 +25,7 @@ There's one catalog per *provider*, and the dataset should be added to the catal
 A dataset *must* be identified by a unique id, which *must* be the key of the `sources` dictionary in the catalog.
 If a dataset is available at multiple storage locations, the unique id must be identical across all storage locations.
 `metadata` *should* be specified with each entry.
-If a dataset is available at multiple storage locations, metadata must either be identical, or can be skipped (in this case, it will be copied over from other storage locations).
+**If a dataset is available at multiple storage locations, metadata should only be provided in one file**. The others can have a comment like `# metadata in <location>`. The scripts will take care of copying the metadata to the other catalogs.
 Metadata corresponds to the dataset's global attributes.
 It *should* be the same, but *may* be extended in the catalog.
 We recommend to fill at least the following metadata attributes (following [CF](https://cfconventions.org/Data/cf-conventions/cf-conventions-1.12/cf-conventions.html) and [ACDD](https://wiki.esipfed.org/Attribute_Convention_for_Data_Discovery_1-3) conventions):
