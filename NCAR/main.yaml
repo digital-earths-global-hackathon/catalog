@@ -1,4 +1,52 @@
 sources:
+  ew_dyamond3_2D:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: /glade/derecho/scratch/digital-earths-hackathon/EW_dyamond3/2D_{{time}}/EW_B2000_*{{time}}*_to_hp{{zoom}}.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+        - PT1H
+        - PT3H
+        default: PT1H
+        description: temporal resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+        - 9
+        - 8
+        - 7
+        - 6
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        default: 7
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      title: EarthWorks MPAS 15km simulation (full year DYAMOND3)
+      project: global_hackathon
+      experiment_id: dyamond3
+      source_id: MPAS
+      simulation_id: unknown
+      time_start: 2020-03-01T01:00:00
+      time_end: 2021-03-01T00:00:00
+      summary: |
+         Atmosphere-land-ocean coupled simulations for 2D fields at 15km grid spacing at 58 atmospheric levels. Run from 2020-03-01 to 2021-03-01.
+
+         **Resolutions**
+           * All data is available at HEALPix levels 1-9 for 2D fields
+
+         **Processing**
+           * Fields were remapped to HEALPix level 9 using Delaunay triangulation. 
+           * Lower levels were generated from this using coarse-graining.
+         
+      creator_name: Don Dazlich
+      institution: Colorado State University
   mpas_dyamond3:
     args:
       chunks: null
