@@ -534,7 +534,7 @@ sources:
       summary: |
           - horizontal resolutions: 1.3 km, TCo7679 (partial dataset, 3 months), starting 2020 (with spinup)
           - 72 vertical levels
-          - Simulations with shallow and deep convection, hydrostatic core
+          - Simulations with shallow and (diluted) deep convection, hydrostatic core
           - HEALPix level 8
           - Only 2D fields are available as instantaneous values starting at 1-hourly interval (PT1H). Time means are calculated from the instantaneous values.
       license: Creative Commons CC BY 4.0. https://creativecommons.org/licenses/by/4.0/
@@ -578,7 +578,7 @@ sources:
       summary: |
           - horizontal resolutions : 2.6 km, TCo3839 (14 months), starting 2020 (with spinup)
           - 72 vertical levels
-          - Simulations with shallow and deep convection, hydrostatic core
+          - Simulations with shallow and (diluted) deep convection, hydrostatic core
           - HEALPix level 8 and 3D fields on 19 pressure levels
           - 2D fields are available as instantaneous values starting at 1-hourly interval (PT1H). Time means are calculated from the instantaneous values.
           - 3D fields are available as instantaneous values starting at 6-hourly interval (PT6H). No mean values available.
