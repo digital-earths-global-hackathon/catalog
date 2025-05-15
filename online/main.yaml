@@ -842,17 +842,17 @@ sources:
       urlpath: https://s3.eu-dkrz-1.dkrz.cloud/wrcp-hackathon/data/ICON/tracking/mcstracking/mcs_mask_hp9_20200102.0000_20201231.2330.zarr
     driver: zarr
     description: Tracking for ICON d3hp003
-  arp-gem:
+  arp-gem-1p3km:
     args:
       chunks: null
       consolidated: true
-      urlpath: https://s3.eu-dkrz-1.dkrz.cloud/wrcp-hackathon/data/ARP-GEM/ARPGEM2_{{ resolution }}km_{{ time }}_inst_z{{ zoom }}.zarr
+      urlpath: https://s3.eu-dkrz-1.dkrz.cloud/wrcp-hackathon/data/ARP-GEM/ARPGEM2_1p3km_{{ time }}_inst_z{{ zoom }}.zarr
     driver: zarr
     parameters:
       time:
         allowed:
-        - PT6H
-        default: PT6H
+        - PT1H
+        default: PT1H
         description: time resolution of the dataset
         type: str
       time_method:
@@ -868,10 +868,32 @@ sources:
         default: 8
         description: zoom level of the dataset
         type: int
-      resolution:
+  # metadata is in the EU catalog
+  arp-gem-2p6km:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: https://s3.eu-dkrz-1.dkrz.cloud/wrcp-hackathon/data/ARP-GEM/ARPGEM2_2p6km_{{ time }}_inst_z{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      time:
         allowed:
-        - 1p3
-        - 2p6
-        default: 2p6
-        description: resolution of the simulation
+        - PT6H
+        - PT1H
+        default: PT1H
+        description: time resolution of the dataset
         type: str
+      time_method:
+        allowed:
+        - inst
+        - mean
+        default: inst
+        description: time method of the dataset
+        type: str
+      zoom:
+        allowed:
+        - 8
+        default: 8
+        description: zoom level of the dataset
+        type: int
+    # metadata is in the EU catalog

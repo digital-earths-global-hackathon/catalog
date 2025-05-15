@@ -503,17 +503,17 @@ sources:
       references: https://doi.org/10.5194/gmd-18-33-2025, https://www.ecmwf.int/en/forecasts/documentation-and-support/changes-ecmwf-model, 
       institution: European Centre for Medium-Range Weather Forecasts (ECMWF)
       citation: Rackow, T., Pedruzo-Bagazgoitia, X., Becker, T., Milinski, S., Sandu, I., Aguridan, R., Bechtold, P., Beyer, S., Bidlot, J., Boussetta, S., Deconinck, W., Diamantakis, M., Dueben, P., Dutra, E., Forbes, R., Ghosh, R., Goessling, H. F., Hadade, I., Hegewald, J., Jung, T., Keeley, S., Kluft, L., Koldunov, N., Koldunov, A., Kölling, T., Kousal, J., Kühnlein, C., Maciel, P., Mogensen, K., Quintino, T., Polichtchouk, I., Reuter, B., Sármány, D., Scholz, P., Sidorenko, D., Streffing, J., Sützl, B., Takasuka, D., Tietsche, S., Valentini, M., Vannière, B., Wedi, N., Zampieri, L., and Ziemen, F. - Multi-year simulations at kilometre scale with the Integrated Forecasting System coupled to FESOM2.5 and NEMOv3.4, Geosci. Model Dev., 18, 33–69, https://doi.org/10.5194/gmd-18-33-2025, 2025.
-  arp-gem:
+  arp-gem-1p3km:
     args:
       chunks: null
       consolidated: true
-      urlpath: /work/bm1235/ARP_GEM/ARPGEM2_{{ resolution }}km_{{ time }}_{{ time_method }}_z{{ zoom }}.zarr
+      urlpath: /work/bm1235/ARP_GEM/ARPGEM2_1p3km_{{ time }}_{{ time_method }}_z{{ zoom }}.zarr
     driver: zarr
     parameters:
       time:
         allowed:
-        - PT6H
-        default: PT6H
+        - PT1H
+        default: PT1H
         description: time resolution of the dataset
         type: str
       time_method:
@@ -529,10 +529,65 @@ sources:
         default: 8
         description: zoom level of the dataset
         type: int
-      resolution:
+    metadata:
+      title: ARP-GEM 1.3 km simulations
+      summary: |
+          - horizontal resolutions: 1.3 km, TCo7679 (partial dataset, 3 months), starting 2020 (with spinup)
+          - 72 vertical levels
+          - Simulations with shallow and (diluted) deep convection, hydrostatic core
+          - HEALPix level 8
+          - Only 2D fields are available as instantaneous values starting at 1-hourly interval (PT1H). Time means are calculated from the instantaneous values.
+      license: Creative Commons CC BY 4.0. https://creativecommons.org/licenses/by/4.0/
+      creator_name: Olivier Geoffroy, David Saint-Martin
+      creator_email: olivier.geoffroy@meteo.fr
+      source_id: ARP-GEM2
+      simulation_id: DYAMOND3
+      references: The ARP-GEM1 Global Atmosphere Model (Geoffroy and Saint-Martin, 2025)
+      time_start: 2020-01-01T00:00:00
+      time_end: 2021-03-01T00:00:00
+      institution: CNRM (Centre National de Recherches Meteorologiques, Meteo-France / CNRS, Toulouse, France)
+  arp-gem-2p6km:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath: /work/bm1235/ARP_GEM/ARPGEM2_2p6km_{{ time }}_{{ time_method }}_z{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      time:
         allowed:
-        - 1p3
-        - 2p6
-        default: 2p6
-        description: resolution of the simulation
+        - PT6H
+        - PT1H
+        default: PT1H
+        description: time resolution of the dataset
         type: str
+      time_method:
+        allowed:
+        - inst
+        - mean
+        default: inst
+        description: time method of the dataset
+        type: str
+      zoom:
+        allowed:
+        - 8
+        default: 8
+        description: zoom level of the dataset
+        type: int
+    metadata:
+      title: ARP-GEM 2.6 km simulations
+      summary: |
+          - horizontal resolutions : 2.6 km, TCo3839 (14 months), starting 2020 (with spinup)
+          - 72 vertical levels
+          - Simulations with shallow and (diluted) deep convection, hydrostatic core
+          - HEALPix level 8 and 3D fields on 19 pressure levels
+          - 2D fields are available as instantaneous values starting at 1-hourly interval (PT1H). Time means are calculated from the instantaneous values.
+          - 3D fields are available as instantaneous values starting at 6-hourly interval (PT6H). No mean values available.
+      license: Creative Commons CC BY 4.0. https://creativecommons.org/licenses/by/4.0/
+      creator_name: Olivier Geoffroy, David Saint-Martin
+      creator_email: olivier.geoffroy@meteo.fr
+      source_id: ARP-GEM2
+      simulation_id: DYAMOND3
+      references: The ARP-GEM1 Global Atmosphere Model (Geoffroy and Saint-Martin, 2025)
+      time_start: 2020-01-01T00:00:00
+      time_end: 2021-03-01T00:00:00
+      institution: CNRM (Centre National de Recherches Meteorologiques, Meteo-France / CNRS, Toulouse, France)
