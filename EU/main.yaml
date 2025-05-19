@@ -143,6 +143,9 @@ sources:
       citation: Takasuka, D., Satoh, M., Miyakawa, T. et al. A protocol and analysis of year-long simulations of global storm-resolving models and beyond. Prog Earth Planet Sci 11, 66 (2024). https://doi.org/10.1186/s40645-024-00668-1
   ifs_tco3999-ng5_rcbmf:
     args:
+      storage_options:
+        remote_protocol: file
+        lazy: true       
       consolidated: false
       urlpath: >
         {% with time_map = {'PT1H': 'hourly', 'P1M': 'monthly'}, zoom_map = {7: '128', 9: '512', 10: '1024', 11: '2048'} -%}
@@ -392,6 +395,9 @@ sources:
     args:
       chunks: auto
       consolidated: false
+      storage_options:
+        remote_protocol: file
+        lazy: true                  
       urlpath: >
         {% with time_map = {'PT1H': 'hourly', 'P1M': 'monthly'}, zoom_map = {7: '128', 9: '512', 10: '1024', 11: '2048'} -%}
         reference::/work/bm1344/DKRZ/kerchunks_batched/NGC-IFS-tco3999-ng5-production-deep-off/{{ dim }}_{{ time_map[time] }}_healpix{{ zoom_map[zoom] }}.parq
