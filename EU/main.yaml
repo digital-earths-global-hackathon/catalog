@@ -548,7 +548,7 @@ sources:
       creator_email: olivier.geoffroy@meteo.fr
       source_id: ARP-GEM2
       simulation_id: DYAMOND3
-      references: The ARP-GEM1 Global Atmosphere Model (Geoffroy and Saint-Martin, 2025)
+      references: The ARP-GEM2 Global Atmosphere Model (Geoffroy and Saint-Martin, 2025)
       time_start: 2020-01-01T00:00:00
       time_end: 2021-03-01T00:00:00
       institution: CNRM (Centre National de Recherches Meteorologiques, Meteo-France / CNRS, Toulouse, France)
@@ -593,7 +593,7 @@ sources:
       creator_email: olivier.geoffroy@meteo.fr
       source_id: ARP-GEM2
       simulation_id: DYAMOND3
-      references: The ARP-GEM1 Global Atmosphere Model (Geoffroy and Saint-Martin, 2025)
+      references: The ARP-GEM2 Global Atmosphere Model (Geoffroy and Saint-Martin, 2025)
       time_start: 2020-01-01T00:00:00
       time_end: 2021-03-01T00:00:00
       institution: CNRM (Centre National de Recherches Meteorologiques, Meteo-France / CNRS, Toulouse, France)
