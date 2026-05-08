@@ -439,7 +439,7 @@ sources:
       chunks: null
       consolidated: true
       urlpath:
-        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/glm.n2560_RAL3p3.tuned/um.{{ time }}.hp_z{{ zoom }}.zarr"
+        - http://hackathon-o.s3.jc.rl.ac.uk/sim-data/prod/v7/glm.n2560_RAL3p3.tuned/um.{{ time }}.hp_z{{ zoom }}.zarr"
     driver: zarr
     parameters:
       time:
@@ -499,7 +499,7 @@ sources:
       chunks: null
       consolidated: true
       urlpath:
-        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/glm.n2560_CoMA9_hier_v2/um.{{ time }}.hp_z{{ zoom }}.zarr"
+        - http://hackathon-o.s3.jc.rl.ac.uk/sim-data/prod/v7/glm.n2560_CoMA9_hier_v2/um.{{ time }}.hp_z{{ zoom }}.zarr"
     driver: zarr
     parameters:
       time:
@@ -559,7 +559,7 @@ sources:
       chunks: null
       consolidated: true
       urlpath:
-        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/glm.n1280_GAL9_v2/um.{{ time }}.hp_z{{ zoom }}.zarr"
+        - http://hackathon-o.s3.jc.rl.ac.uk/sim-data/prod/v7/glm.n1280_GAL9_v2/um.{{ time }}.hp_z{{ zoom }}.zarr"
     driver: zarr
     parameters:
       time:
@@ -617,7 +617,7 @@ sources:
       chunks: null
       consolidated: true
       urlpath:
-        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/glm.n1280_CoMA9/um.{{ time }}.hp_z{{ zoom }}.zarr"
+        - http://hackathon-o.s3.jc.rl.ac.uk/sim-data/prod/v7/glm.n1280_CoMA9/um.{{ time }}.hp_z{{ zoom }}.zarr"
     driver: zarr
     parameters:
       time:
@@ -676,7 +676,7 @@ sources:
       chunks: null
       consolidated: true
       urlpath:
-        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/Africa_km4p4_RAL3P3.n1280_CoMA9/um.{{ time }}.hp_z{{ zoom }}.zarr"
+        - http://hackathon-o.s3.jc.rl.ac.uk/sim-data/prod/v7/Africa_km4p4_RAL3P3.n1280_CoMA9/um.{{ time }}.hp_z{{ zoom }}.zarr"
     driver: zarr
     parameters:
       time:
