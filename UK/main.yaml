@@ -432,3 +432,303 @@ sources:
       creator_email: richard.w.jones@metoffice.gov.uk, claudio.sanchez@metoffice.gov.uk, huw.lewis@metoffice.gov.uk, calum.scullion@metoffice.gov.uk, dasha.shchepanovska@metoffice.gov.uk, mark.muetzelfeldt@reading.ac.uk
       history: Richard Jones ran this simulation on Atos (ECMWF), Mark Muetzelfeldt converted from UM lat/lon output to healpix (JASMIN)
       institution: Met Office
+
+  # hk26 simulations.
+  um_glm_n2560_RAL3p3_tuned_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/glm.n2560_RAL3p3.tuned/um.{{ time }}.hp_z{{ zoom }}.zarr"
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 10
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      project: global_hackathon
+      experiment_id: hackathon
+      grid_mapping: healpix
+      region: global
+      resolution: 5km
+      configuration: RAL3p3
+      source_id: UM-5km-RAL3-global
+      simulation_id: 5km-RAL3
+      time_start: 2020-01-20T00:00:00
+      time_end: 2021-03-01T00:00
+      title: RAL3.3 5 km simulation
+      summary: |
+        Atmosphere-only simulation at 5 km resolution. Run for 1 year and 2 months starting in 2020.
+
+        **Simulation**:
+          * Source code: Regional Nesting Suite (RNS)
+          * Horizontal grid: 5km resolution global lat-lon grid
+          * Vertical grid: L85_80km - 85 levels, model top at 80km
+          * Initial conditions: From operational model for date 2020-01-20T00:00:00Z
+
+      references: https://doi.org/10.5194/gmd-2024-201
+      license:  Crown Copyright, 2026, Met Office. For Educational Use and Non-Commercial Research Use only.
+      creator_name: Richard W. Jones, Claudio Sanchez, Huw Lewis, Calum Scullion, Dasha Shchepanovska, Mark Muetzelfeldt
+      creator_email: richard.w.jones@metoffice.gov.uk, claudio.sanchez@metoffice.gov.uk, huw.lewis@metoffice.gov.uk, calum.scullion@metoffice.gov.uk, dasha.shchepanovska@metoffice.gov.uk, mark.muetzelfeldt@reading.ac.uk
+      history: Calum Scullion ran this simulation on Atos (ECMWF), Mark Muetzelfeldt converted from UM lat/lon output to healpix (JASMIN)
+      institution: Met Office
+      conventions: CF-1.13
+
+  um_glm_n2560_CoMA9_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/glm.n2560_CoMA9_hier_v2/um.{{ time }}.hp_z{{ zoom }}.zarr"
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 10
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      project: global_hackathon
+      experiment_id: hackathon
+      grid_mapping: healpix
+      region: global
+      resolution: 5km
+      configuration: CoMA9
+      source_id: UM-5km-CoMA9-global
+      simulation_id: 5km-CoMA9
+      time_start: 2020-01-20T00:00:00
+      time_end: 2021-03-01T00:00
+      title: CoMA9 5 km simulation
+      summary: |
+        Atmosphere-only simulation at 5 km resolution. Run for 1 year and 2 months starting in 2020.
+
+        **Simulation**:
+          * Source code: Regional Nesting Suite (RNS)
+          * Horizontal grid: 5km resolution global lat-lon grid
+          * Vertical grid: L85_80km - 85 levels, model top at 80km
+          * Initial conditions: From operational model for date 2020-01-20T00:00:00Z
+
+      references: https://doi.org/10.5194/gmd-2024-201
+      license:  Crown Copyright, 2026, Met Office. For Educational Use and Non-Commercial Research Use only.
+      creator_name: Richard W. Jones, Claudio Sanchez, Huw Lewis, Calum Scullion, Dasha Shchepanovska, Mark Muetzelfeldt
+      creator_email: richard.w.jones@metoffice.gov.uk, claudio.sanchez@metoffice.gov.uk, huw.lewis@metoffice.gov.uk, calum.scullion@metoffice.gov.uk, dasha.shchepanovska@metoffice.gov.uk, mark.muetzelfeldt@reading.ac.uk
+      history: Calum Scullion ran this simulation on Atos (ECMWF), Mark Muetzelfeldt converted from UM lat/lon output to healpix (JASMIN)
+      institution: Met Office
+      conventions: CF-1.13
+
+  um_glm_n1280_GAL9_v2_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/glm.n1280_GAL9_v2/um.{{ time }}.hp_z{{ zoom }}.zarr"
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      project: global_hackathon
+      experiment_id: hackathon
+      grid_mapping: healpix
+      region: global
+      resolution: 10km
+      configuration: GAL9
+      source_id: UM-10km-GAL9-global
+      simulation_id: 10km-GAL9-v2
+      time_start: 2020-01-20T00:00:00
+      time_end: 2021-03-01T00:00:00
+      title: GAL9 10 km simulation - global driving model
+      summary: |
+        Atmosphere-only simulation at 10 km resolution. Run for 1 year and 2 months starting in 2020.
+
+        **Simulation**:
+          * Source code: Regional Nesting Suite (RNS)
+          * Horizontal grid: 10km resolution global lat-lon grid
+          * Vertical grid: L85_80km - 85 levels, model top at 80km
+          * Initial conditions: From operational model for date 2020-01-20T00:00:00Z
+
+      license: Crown Copyright, 2026, Met Office. For Educational Use and Non-Commercial Research Use only.
+      creator_name: Richard W. Jones, Claudio Sanchez, Huw Lewis, Calum Scullion, Dasha Shchepanovska, Mark Muetzelfeldt
+      creator_email: richard.w.jones@metoffice.gov.uk, claudio.sanchez@metoffice.gov.uk, huw.lewis@metoffice.gov.uk, calum.scullion@metoffice.gov.uk, dasha.shchepanovska@metoffice.gov.uk, mark.muetzelfeldt@reading.ac.uk
+      history: Dasha Shchepanovska ran this simulation on Atos (ECMWF), Mark Muetzelfeldt converted from UM lat/lon output to healpix (JASMIN)
+      institution: Met Office
+      conventions: CF-1.13
+
+  um_glm_n1280_CoMA9_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/glm.n1280_CoMA9/um.{{ time }}.hp_z{{ zoom }}.zarr"
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      project: global_hackathon
+      experiment_id: hackathon
+      grid_mapping: healpix
+      region: global
+      resolution: 10km
+      configuration: CoMA9
+      source_id: UM-10km-CoMA9-global
+      simulation_id: 10km-CoMA9-nest
+      time_start: 2020-01-20T00:00:00
+      time_end: 2021-03-01T00:00:00
+      title: CoMA9 10 km simulation - global driving model
+      summary: |
+        Atmosphere-only simulation at 10 km resolution. Run for 1 year and 2 months starting in 2020.
+
+        **Simulation**:
+          * Source code: Regional Nesting Suite (RNS)
+          * Horizontal grid: 10km resolution global lat-lon grid
+          * Vertical grid: L85_80km - 85 levels, model top at 80km
+          * Initial conditions: From operational model for date 2020-01-20T00:00:00Z
+
+      license: Crown Copyright, 2026, Met Office. For Educational Use and Non-Commercial Research Use only.
+      creator_name: Richard W. Jones, Claudio Sanchez, Huw Lewis, Calum Scullion, Dasha Shchepanovska, Mark Muetzelfeldt
+      creator_email: richard.w.jones@metoffice.gov.uk, claudio.sanchez@metoffice.gov.uk, huw.lewis@metoffice.gov.uk, calum.scullion@metoffice.gov.uk, dasha.shchepanovska@metoffice.gov.uk, mark.muetzelfeldt@reading.ac.uk
+      history: Dasha Shchepanovska ran this simulation on Atos (ECMWF), Mark Muetzelfeldt converted from UM lat/lon output to healpix (JASMIN)
+      institution: Met Office
+      conventions: CF-1.13
+
+  # Regional.
+  um_Africa_km4p4_RAL3P3_n1280_CoMA9_nest_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/Africa_km4p4_RAL3P3.n1280_CoMA9/um.{{ time }}.hp_z{{ zoom }}.zarr"
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 10
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      project: global_hackathon
+      experiment_id: hackathon
+      geospatial_lon_min: 340.00
+      geospatial_lon_max: 53.96
+      geospatial_lat_min: -40.00
+      geospatial_lat_max: 25.96
+      region: Africa
+      resolution: 4.4km
+      configuration: RAL3p3
+      source_id:  UM-4.4km-RAL3-Africa
+      simulation_id: 10km-CoMA9-nest
+      time_start: 2020-01-20T00:00:00
+      time_end: 2021-03-01T00:00:00
+      title: 4.4km resolution RAL3 Africa LAM nested in 10km CoMA9 global driving model
+      summary: |
+        Atmosphere-only RAL3 simulation of the Africa LAM at 4.4 km resolution. Run for 1 year and 2 months starting in 2020.
+      
+        **Simulation**:
+          * Source code: Regional Nesting Suite (RNS)
+          * Horizontal grid: 4.4km resolution global lat-lon grid
+          * Vertical grid: L90_40km - 90 levels, model top at 40km
+          * Initial conditions: From operational model for date 2020-01-20T00:00:00Z
+      license:  Crown Copyright, 2026, Met Office. For Educational Use and Non-Commercial Research Use only.
+      creator_name: Richard W. Jones, Claudio Sanchez, Huw Lewis, Calum Scullion, Dasha Shchepanovska, Mark Muetzelfeldt
+      creator_email: richard.w.jones@metoffice.gov.uk, claudio.sanchez@metoffice.gov.uk, huw.lewis@metoffice.gov.uk, calum.scullion@metoffice.gov.uk, dasha.shchepanovska@metoffice.gov.uk, mark.muetzelfeldt@reading.ac.uk
+      history: Dasha Shchepanovska ran this simulation on Atos (ECMWF), Mark Muetzelfeldt converted from UM lat/lon output to healpix (JASMIN)
+      institution: Met Office
+      conventions: CF-1.13
+

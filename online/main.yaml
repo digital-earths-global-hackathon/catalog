@@ -965,3 +965,161 @@ sources:
         description: zoom level of the dataset
         type: int
     # metadata is in the EU catalog
+  um_glm_n2560_RAL3p3_tuned_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/glm.n2560_RAL3p3.tuned/um.{{ time }}.hp_z{{ zoom }}.zarr"
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 10
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    # metadata is in the UK catalog
+  um_glm_n2560_CoMA9_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/glm.n2560_CoMA9_hier_v2/um.{{ time }}.hp_z{{ zoom }}.zarr"
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 10
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    # metadata is in the UK catalog
+  um_glm_n1280_GAL9_v2_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/glm.n1280_GAL9_v2/um.{{ time }}.hp_z{{ zoom }}.zarr"
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    # metadata is in the UK catalog
+  um_glm_n1280_CoMA9_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/glm.n1280_CoMA9/um.{{ time }}.hp_z{{ zoom }}.zarr"
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    # metadata is in the UK catalog
+  um_Africa_km4p4_RAL3P3_n1280_CoMA9_nest_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/Africa_km4p4_RAL3P3.n1280_CoMA9/um.{{ time }}.hp_z{{ zoom }}.zarr"
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 10
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    # metadata is in the UK catalog
