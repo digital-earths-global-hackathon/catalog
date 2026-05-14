@@ -731,7 +731,7 @@ sources:
       license:  Crown Copyright, 2026, Met Office. For Educational Use and Non-Commercial Research Use only.
       creator_name: Richard W. Jones, Claudio Sanchez, Huw Lewis, Calum Scullion, Dasha Shchepanovska, Mark Muetzelfeldt
       creator_email: richard.w.jones@metoffice.gov.uk, claudio.sanchez@metoffice.gov.uk, huw.lewis@metoffice.gov.uk, calum.scullion@metoffice.gov.uk, dasha.shchepanovska@metoffice.gov.uk, mark.muetzelfeldt@reading.ac.uk
-      history: Dasha Shchepanovska ran this simulation on Atos (ECMWF), Mark Muetzelfeldt converted from UM lat/lon output to healpix (JASMIN)
+      history: Dasha Shchepanovska, Calum Scullion and Richard Jones ran this simulation on Atos (ECMWF), Mark Muetzelfeldt converted from UM lat/lon output to healpix (JASMIN)
       institution: Met Office
       conventions: CF-1.13
 
