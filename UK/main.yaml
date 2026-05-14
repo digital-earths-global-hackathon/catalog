@@ -19,6 +19,8 @@ sources:
       creator_email: zhe.feng@pnnl.gov, mark.muetzelfeldt@reading.ac.uk
       history: Obtained and processed by Zhe Feng. Converted to healpix by Mark Muetzelfeldt.
       institution: Pacific Northwest National Laboratory (PNNL)
+
+  # hk25 simulations.
   um_glm_n1280_GAL9:
     args:
       chunks: null
@@ -60,7 +62,7 @@ sources:
       source_id:  UM-10km-GAL9-global
       simulation_id: 10km-GAL9-nest
       time_start: 2020-01-20T00:00:00
-      time_end: 2021-03-01T00:00:00
+      time_end: 2021-03-01T00:00
       title: GAL9 10 km simulation - global driving model
       summary: |
         Atmosphere-only simulation at 10 km resolution. Run for 1 year and 2 months starting in 2020.
@@ -120,7 +122,7 @@ sources:
       source_id:  UM-4.4km-RAL3-CTC
       simulation_id: 10km-GAL9-nest
       time_start: 2020-01-20T00:00:00
-      time_end: 2021-03-01T00:00:00
+      time_end: 2021-03-01T00:00
       title: 4.4km resolution RAL3 CTC nested in 10km GAL9 global driving model
       summary: |
         Atmosphere-only RAL3 simulation of the Cyclic Tropical Channel (CTC) at 4.4 km resolution. Run for 1 year and 2 months starting in 2020.
@@ -180,7 +182,7 @@ sources:
       source_id:  UM-4.4km-RAL3-SAmer
       simulation_id: 10km-GAL9-nest
       time_start: 2020-01-20T00:00:00
-      time_end: 2021-03-01T00:00:00
+      time_end: 2021-03-01T00:00
       title: 4.4km resolution RAL3 SAmer LAM nested in 10km GAL9 global driving model
       summary: |
         Atmosphere-only RAL3 simulation of the South America (SAmer) LAM at 4.4 km resolution. Run for 1 year and 2 months starting in 2020.
@@ -240,7 +242,7 @@ sources:
       source_id:  UM-4.4km-RAL3-Africa
       simulation_id: 10km-GAL9-nest
       time_start: 2020-01-20T00:00:00
-      time_end: 2021-03-01T00:00:00
+      time_end: 2021-03-01T00:00
       title: 4.4km resolution RAL3 Africa LAM nested in 10km GAL9 global driving model
       summary: |
         Atmosphere-only RAL3 simulation of the Africa LAM at 4.4 km resolution. Run for 1 year and 2 months starting in 2020.
@@ -416,7 +418,7 @@ sources:
       source_id:  UM-10km-CoMA9-global
       simulation_id: 10km-CoMA9
       time_start: 2020-01-20T00:00:00
-      time_end: 2021-03-01T00:00:00
+      time_end: 2021-03-01T00:00
       title: CoMorph9 (CoMA9) 10km simulation - global
       summary: |
         Atmosphere-only CoMorph9 simulation at 10 km resolution. Run for 1 year and 2 months starting in 2020.
@@ -594,7 +596,7 @@ sources:
       source_id: UM-10km-GAL9-global
       simulation_id: 10km-GAL9-v2
       time_start: 2020-01-20T00:00:00
-      time_end: 2021-03-01T00:00:00
+      time_end: 2021-03-01T00:00
       title: GAL9 10 km simulation - global driving model
       summary: |
         Atmosphere-only simulation at 10 km resolution. Run for 1 year and 2 months starting in 2020.
@@ -650,9 +652,9 @@ sources:
       resolution: 10km
       configuration: CoMA9
       source_id: UM-10km-CoMA9-global
-      simulation_id: 10km-CoMA9-nest
+      simulation_id: 10km-CoMA9
       time_start: 2020-01-20T00:00:00
-      time_end: 2021-03-01T00:00:00
+      time_end: 2021-03-01T00:00
       title: CoMA9 10 km simulation - global driving model
       summary: |
         Atmosphere-only simulation at 10 km resolution. Run for 1 year and 2 months starting in 2020.
@@ -671,7 +673,7 @@ sources:
       conventions: CF-1.13
 
   # Regional.
-  um_Africa_km4p4_RAL3P3_n1280_CoMA9_nest_hk26:
+  um_Africa_km4p4_RAL3P3_n2560_CoMA9_nest_hk26:
     args:
       chunks: null
       consolidated: true
@@ -705,6 +707,7 @@ sources:
     metadata:
       project: global_hackathon
       experiment_id: hackathon
+      grid_mapping: healpix
       geospatial_lon_min: 340.00
       geospatial_lon_max: 53.96
       geospatial_lat_min: -40.00
@@ -713,13 +716,75 @@ sources:
       resolution: 4.4km
       configuration: RAL3p3
       source_id:  UM-4.4km-RAL3-Africa
-      simulation_id: 10km-CoMA9-nest
+      simulation_id: 5km-CoMA9-nest
       time_start: 2020-01-20T00:00:00
-      time_end: 2021-03-01T00:00:00
-      title: 4.4km resolution RAL3 Africa LAM nested in 10km CoMA9 global driving model
+      time_end: 2021-03-01T00:00
+      title: 4.4km resolution RAL3 Africa LAM nested in 5km CoMA9 global driving model
       summary: |
         Atmosphere-only RAL3 simulation of the Africa LAM at 4.4 km resolution. Run for 1 year and 2 months starting in 2020.
-      
+
+        **Simulation**:
+          * Source code: Regional Nesting Suite (RNS)
+          * Horizontal grid: 4.4km resolution global lat-lon grid
+          * Vertical grid: L90_40km - 90 levels, model top at 40km
+          * Initial conditions: From operational model for date 2020-01-20T00:00:00Z
+      license:  Crown Copyright, 2026, Met Office. For Educational Use and Non-Commercial Research Use only.
+      creator_name: Richard W. Jones, Claudio Sanchez, Huw Lewis, Calum Scullion, Dasha Shchepanovska, Mark Muetzelfeldt
+      creator_email: richard.w.jones@metoffice.gov.uk, claudio.sanchez@metoffice.gov.uk, huw.lewis@metoffice.gov.uk, calum.scullion@metoffice.gov.uk, dasha.shchepanovska@metoffice.gov.uk, mark.muetzelfeldt@reading.ac.uk
+      history: Dasha Shchepanovska, Calum Scullion and Richard Jones ran this simulation on Atos (ECMWF), Mark Muetzelfeldt converted from UM lat/lon output to healpix (JASMIN)
+      institution: Met Office
+      conventions: CF-1.13
+
+  um_SAmer_km4p4_RAL3P3_n2560_CoMA9_nest_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - http://hackathon-o.s3.jc.rl.ac.uk/sim-data/prod/v7/SAmer_km4p4_RAL3P3.n1280_CoMA9/um.{{ time }}.hp_z{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 10
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      project: global_hackathon
+      experiment_id: hackathon
+      grid_mapping: healpix
+      geospatial_lon_min: 274.00
+      geospatial_lon_max: 333.96
+      geospatial_lat_min: -30.00
+      geospatial_lat_max: 13.96
+      region: South America
+      resolution: 4.4km
+      configuration: RAL3p3
+      source_id:  UM-4.4km-RAL3-SAmer
+      simulation_id: 5km-CoMA9-nest
+      time_start: 2020-01-20T00:00:00
+      time_end: 2021-03-01T00:00
+      title: 4.4km resolution RAL3 South America LAM nested in 5km CoMA9 global driving model
+      summary: |
+        Atmosphere-only RAL3 simulation of the South America LAM at 4.4 km resolution. Run for 1 year and 2 months starting in 2020.
+
         **Simulation**:
           * Source code: Regional Nesting Suite (RNS)
           * Horizontal grid: 4.4km resolution global lat-lon grid
@@ -732,3 +797,374 @@ sources:
       institution: Met Office
       conventions: CF-1.13
 
+  um_SEA_km4p4_RAL3P3_n2560_CoMA9_nest_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - http://hackathon-o.s3.jc.rl.ac.uk/sim-data/prod/v7/SEA_km4p4_RAL3P3.n1280_CoMA9/um.{{ time }}.hp_z{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 10
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      project: global_hackathon
+      experiment_id: hackathon
+      grid_mapping: healpix
+      geospatial_lon_min: 90.00
+      geospatial_lon_max: 153.96
+      geospatial_lat_min: -18.00
+      geospatial_lat_max: 25.96
+      region: South East Asia
+      resolution: 4.4km
+      configuration: RAL3p3
+      source_id:  UM-4.4km-RAL3-SEA
+      simulation_id: 5km-CoMA9-nest
+      time_start: 2020-01-20T00:00:00
+      time_end: 2021-03-01T00:00
+      title: 4.4km resolution RAL3 South East Asia LAM nested in 5km CoMA9 global driving model
+      summary: |
+        Atmosphere-only RAL3 simulation of the South East Asia (SEA) LAM at 4.4 km resolution. Run for 1 year and 2 months starting in 2020.
+
+        **Simulation**:
+          * Source code: Regional Nesting Suite (RNS)
+          * Horizontal grid: 4.4km resolution global lat-lon grid
+          * Vertical grid: L90_40km - 90 levels, model top at 40km
+          * Initial conditions: From operational model for date 2020-01-20T00:00:00Z
+      license:  Crown Copyright, 2026, Met Office. For Educational Use and Non-Commercial Research Use only.
+      creator_name: Richard W. Jones, Claudio Sanchez, Huw Lewis, Calum Scullion, Dasha Shchepanovska, Mark Muetzelfeldt
+      creator_email: richard.w.jones@metoffice.gov.uk, claudio.sanchez@metoffice.gov.uk, huw.lewis@metoffice.gov.uk, calum.scullion@metoffice.gov.uk, dasha.shchepanovska@metoffice.gov.uk, mark.muetzelfeldt@reading.ac.uk
+      history: Dasha Shchepanovska ran this simulation on Atos (ECMWF), Mark Muetzelfeldt converted from UM lat/lon output to healpix (JASMIN)
+      institution: Met Office
+      conventions: CF-1.13
+
+  um_CTC_km4p4_RAL3P3_n2560_CoMA9_nest_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - http://hackathon-o.s3.jc.rl.ac.uk/sim-data/prod/v7/CTC_km4p4_RAL3P3.n1280_CoMA9/um.{{ time }}.hp_z{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 10
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      project: global_hackathon
+      experiment_id: hackathon
+      grid_mapping: healpix
+      geospatial_lon_min: 0.00
+      geospatial_lon_max: 360.00
+      geospatial_lat_min: -40.00
+      geospatial_lat_max: 26.00
+      region: Cyclic Tropical Channel
+      resolution: 4.4km
+      configuration: RAL3p3
+      source_id:  UM-4.4km-RAL3-CTC
+      simulation_id: 5km-CoMA9-nest
+      time_start: 2020-01-20T00:00:00
+      time_end: 2021-03-01T00:00
+      title: 4.4km resolution RAL3 Cyclic Tropical Channel LAM nested in 5km CoMA9 global driving model
+      summary: |
+        Atmosphere-only RAL3 simulation of the Cyclic Tropical Channel (CTC) LAM at 4.4 km resolution. Run for 1 year and 2 months starting in 2020.
+
+        **Simulation**:
+          * Source code: Regional Nesting Suite (RNS)
+          * Horizontal grid: 4.4km resolution global lat-lon grid
+          * Vertical grid: L90_40km - 90 levels, model top at 40km
+          * Initial conditions: From operational model for date 2020-01-20T00:00:00Z
+      license:  Crown Copyright, 2026, Met Office. For Educational Use and Non-Commercial Research Use only.
+      creator_name: Richard W. Jones, Claudio Sanchez, Huw Lewis, Calum Scullion, Dasha Shchepanovska, Mark Muetzelfeldt
+      creator_email: richard.w.jones@metoffice.gov.uk, claudio.sanchez@metoffice.gov.uk, huw.lewis@metoffice.gov.uk, calum.scullion@metoffice.gov.uk, dasha.shchepanovska@metoffice.gov.uk, mark.muetzelfeldt@reading.ac.uk
+      history: Dasha Shchepanovska ran this simulation on Atos (ECMWF), Mark Muetzelfeldt converted from UM lat/lon output to healpix (JASMIN)
+      institution: Met Office
+      conventions: CF-1.13
+
+  um_Africa_km4p4_CoMA9_TBv1_n2560_CoMA9_hier_v2_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - http://hackathon-o.s3.jc.rl.ac.uk/sim-data/prod/v7/Africa_km4p4_CoMA9_TBv1.n2560_CoMA9_hier_v2/um.{{ time }}.hp_z{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 10
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      project: global_hackathon
+      experiment_id: hackathon
+      grid_mapping: healpix
+      geospatial_lon_min: 340.00
+      geospatial_lon_max: 53.96
+      geospatial_lat_min: -40.00
+      geospatial_lat_max: 25.96
+      region: Africa
+      resolution: 4.4km
+      configuration: CoMA9_TBv1
+      source_id:  UM-4.4km-RAL3-Africa
+      simulation_id: 5km-CoMA9-nest
+      time_start: 2020-01-20T00:00:00
+      time_end: 2021-03-01T00:00
+      title: 4.4km resolution CoMA9_TBv1 Africa LAM nested in 5km CoMA9 global driving model
+      summary: |
+        Atmosphere-only CoMA9_TBv1 simulation of the Africa LAM at 4.4 km resolution. Run for 1 year and 2 months starting in 2020.
+
+        **Simulation**:
+          * Source code: Regional Nesting Suite (RNS)
+          * Horizontal grid: 4.4km resolution global lat-lon grid
+          * Vertical grid: L90_40km - 90 levels, model top at 40km
+          * Initial conditions: From operational model for date 2020-01-20T00:00:00Z
+      license:  Crown Copyright, 2026, Met Office. For Educational Use and Non-Commercial Research Use only.
+      creator_name: Richard W. Jones, Claudio Sanchez, Huw Lewis, Calum Scullion, Dasha Shchepanovska, Mark Muetzelfeldt
+      creator_email: richard.w.jones@metoffice.gov.uk, claudio.sanchez@metoffice.gov.uk, huw.lewis@metoffice.gov.uk, calum.scullion@metoffice.gov.uk, dasha.shchepanovska@metoffice.gov.uk, mark.muetzelfeldt@reading.ac.uk
+      history: Dasha Shchepanovska ran this simulation on Atos (ECMWF), Mark Muetzelfeldt converted from UM lat/lon output to healpix (JASMIN)
+      institution: Met Office
+      conventions: CF-1.13
+
+  um_SAmer_km4p4_CoMA9_TBv1_n2560_CoMA9_hier_v2_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - http://hackathon-o.s3.jc.rl.ac.uk/sim-data/prod/v7/SAmer_km4p4_CoMA9_TBv1.n2560_CoMA9_hier_v2/um.{{ time }}.hp_z{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 10
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      project: global_hackathon
+      experiment_id: hackathon
+      grid_mapping: healpix
+      geospatial_lon_min: 274.00
+      geospatial_lon_max: 333.96
+      geospatial_lat_min: -30.00
+      geospatial_lat_max: 13.96
+      region: South America
+      resolution: 4.4km
+      configuration: CoMA9_TBv1
+      source_id:  UM-4.4km-RAL3-SAmer
+      simulation_id: 5km-CoMA9-nest
+      time_start: 2020-01-20T00:00:00
+      time_end: 2021-03-01T00:00
+      title: 4.4km resolution CoMA9_TBv1 South America LAM nested in 5km CoMA9 global driving model
+      summary: |
+        Atmosphere-only CoMA9_TBv1 simulation of the South America LAM at 4.4 km resolution. Run for 1 year and 2 months starting in 2020.
+
+        **Simulation**:
+          * Source code: Regional Nesting Suite (RNS)
+          * Horizontal grid: 4.4km resolution global lat-lon grid
+          * Vertical grid: L90_40km - 90 levels, model top at 40km
+          * Initial conditions: From operational model for date 2020-01-20T00:00:00Z
+      license:  Crown Copyright, 2026, Met Office. For Educational Use and Non-Commercial Research Use only.
+      creator_name: Richard W. Jones, Claudio Sanchez, Huw Lewis, Calum Scullion, Dasha Shchepanovska, Mark Muetzelfeldt
+      creator_email: richard.w.jones@metoffice.gov.uk, claudio.sanchez@metoffice.gov.uk, huw.lewis@metoffice.gov.uk, calum.scullion@metoffice.gov.uk, dasha.shchepanovska@metoffice.gov.uk, mark.muetzelfeldt@reading.ac.uk
+      history: Dasha Shchepanovska ran this simulation on Atos (ECMWF), Mark Muetzelfeldt converted from UM lat/lon output to healpix (JASMIN)
+      institution: Met Office
+      conventions: CF-1.13
+
+  um_SEA_km4p4_CoMA9_TBv1_n2560_CoMA9_hier_v2_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - http://hackathon-o.s3.jc.rl.ac.uk/sim-data/prod/v7/SEA_km4p4_CoMA9_TBv1.n2560_CoMA9_hier_v2/um.{{ time }}.hp_z{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 10
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      project: global_hackathon
+      experiment_id: hackathon
+      grid_mapping: healpix
+      geospatial_lon_min: 90.00
+      geospatial_lon_max: 153.96
+      geospatial_lat_min: -18.00
+      geospatial_lat_max: 25.96
+      region: South East Asia
+      resolution: 4.4km
+      configuration: CoMA9_TBv1
+      source_id:  UM-4.4km-RAL3-SEA
+      simulation_id: 5km-CoMA9-nest
+      time_start: 2020-01-20T00:00:00
+      time_end: 2021-03-01T00:00
+      title: 4.4km resolution CoMA9_TBv1 South East Asia LAM nested in 5km CoMA9 global driving model
+      summary: |
+        Atmosphere-only CoMA9_TBv1 simulation of the South East Asia (SEA) LAM at 4.4 km resolution. Run for 1 year and 2 months starting in 2020.
+
+        **Simulation**:
+          * Source code: Regional Nesting Suite (RNS)
+          * Horizontal grid: 4.4km resolution global lat-lon grid
+          * Vertical grid: L90_40km - 90 levels, model top at 40km
+          * Initial conditions: From operational model for date 2020-01-20T00:00:00Z
+      license:  Crown Copyright, 2026, Met Office. For Educational Use and Non-Commercial Research Use only.
+      creator_name: Richard W. Jones, Claudio Sanchez, Huw Lewis, Calum Scullion, Dasha Shchepanovska, Mark Muetzelfeldt
+      creator_email: richard.w.jones@metoffice.gov.uk, claudio.sanchez@metoffice.gov.uk, huw.lewis@metoffice.gov.uk, calum.scullion@metoffice.gov.uk, dasha.shchepanovska@metoffice.gov.uk, mark.muetzelfeldt@reading.ac.uk
+      history: Dasha Shchepanovska ran this simulation on Atos (ECMWF), Mark Muetzelfeldt converted from UM lat/lon output to healpix (JASMIN)
+      institution: Met Office
+      conventions: CF-1.13
+
+  um_CTC_km4p4_CoMA9_TBv1_n2560_CoMA9_hier_v2_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - http://hackathon-o.s3.jc.rl.ac.uk/sim-data/prod/v7/CTC_km4p4_CoMA9_TBv1.n2560_CoMA9_hier_v2/um.{{ time }}.hp_z{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 10
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      project: global_hackathon
+      experiment_id: hackathon
+      grid_mapping: healpix
+      geospatial_lon_min: 0.00
+      geospatial_lon_max: 360.00
+      geospatial_lat_min: -40.00
+      geospatial_lat_max: 26.00
+      region: Cyclic Tropical Channel
+      resolution: 4.4km
+      configuration: CoMA9_TBv1
+      source_id:  UM-4.4km-RAL3-CTC
+      simulation_id: 5km-CoMA9-nest
+      time_start: 2020-01-20T00:00:00
+      time_end: 2021-03-01T00:00
+      title: 4.4km resolution CoMA9_TBv1 Cyclic Tropical Channel LAM nested in 5km CoMA9 global driving model
+      summary: |
+        Atmosphere-only CoMA9_TBv1 simulation of the Cyclic Tropical Channel (CTC) LAM at 4.4 km resolution. Run for 1 year and 2 months starting in 2020.
+
+        **Simulation**:
+          * Source code: Regional Nesting Suite (RNS)
+          * Horizontal grid: 4.4km resolution global lat-lon grid
+          * Vertical grid: L90_40km - 90 levels, model top at 40km
+          * Initial conditions: From operational model for date 2020-01-20T00:00:00Z
+      license:  Crown Copyright, 2026, Met Office. For Educational Use and Non-Commercial Research Use only.
+      creator_name: Richard W. Jones, Claudio Sanchez, Huw Lewis, Calum Scullion, Dasha Shchepanovska, Mark Muetzelfeldt
+      creator_email: richard.w.jones@metoffice.gov.uk, claudio.sanchez@metoffice.gov.uk, huw.lewis@metoffice.gov.uk, calum.scullion@metoffice.gov.uk, dasha.shchepanovska@metoffice.gov.uk, mark.muetzelfeldt@reading.ac.uk
+      history: Dasha Shchepanovska ran this simulation on Atos (ECMWF), Mark Muetzelfeldt converted from UM lat/lon output to healpix (JASMIN)
+      institution: Met Office
+      conventions: CF-1.13
