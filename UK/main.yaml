@@ -673,7 +673,7 @@ sources:
       conventions: CF-1.13
 
   # Regional.
-  um_Africa_km4p4_RAL3P3_n1280_CoMA9_nest_hk26:
+  um_Africa_km4p4_RAL3P3_n2560_CoMA9_nest_hk26:
     args:
       chunks: null
       consolidated: true
@@ -735,7 +735,7 @@ sources:
       institution: Met Office
       conventions: CF-1.13
 
-  um_SAmer_km4p4_RAL3P3_n1280_CoMA9_nest_hk26:
+  um_SAmer_km4p4_RAL3P3_n2560_CoMA9_nest_hk26:
     args:
       chunks: null
       consolidated: true
@@ -797,7 +797,7 @@ sources:
       institution: Met Office
       conventions: CF-1.13
 
-  um_SEA_km4p4_RAL3P3_n1280_CoMA9_nest_hk26:
+  um_SEA_km4p4_RAL3P3_n2560_CoMA9_nest_hk26:
     args:
       chunks: null
       consolidated: true
@@ -859,7 +859,7 @@ sources:
       institution: Met Office
       conventions: CF-1.13
 
-  um_CTC_km4p4_RAL3P3_n1280_CoMA9_nest_hk26:
+  um_CTC_km4p4_RAL3P3_n2560_CoMA9_nest_hk26:
     args:
       chunks: null
       consolidated: true
