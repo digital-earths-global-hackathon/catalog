@@ -96,7 +96,7 @@ sources:
       title: ICON nextGEMS Cycle 4 simulation
       summary: |
         Coupled atmosphere-ocean simulation at 5km resolution in the ocean and 10km in the atmosphere. Run for 30 years starting in 2020.
-    
+
         [**Resolutions**](https://swift.dkrz.de/v1/dkrz_b381d76e-63d7-4aeb-96f0-dfd91e102d40/nextgems_prefinal/nextgems_prefinal_output.html)
           * Ocean data is available at healpix levels 0-10
           * Atmosphere data at levels 0-9. 
@@ -112,7 +112,7 @@ sources:
       creator_email: karl-hermann.wieners@mpimet.mpg.de
       source: ICON Model
       institution: Max Planck Institute for Meteorology
-  
+
   icon_d3hp003:
     args:
       chunks: null
@@ -853,7 +853,7 @@ sources:
       summary: |
         Subset of what is available via Globus.
         Each entry merges existing datasets as follows:
-         
+
         scream_PT1H (Resolution 0-10):
           * scream2D_hrly_pr_hp*_v7
           * scream2D_hrly_rlut_hp*_v7
@@ -1097,6 +1097,230 @@ sources:
       consolidated: true
       urlpath:
         - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/Africa_km4p4_RAL3P3.n1280_CoMA9/um.{{ time }}.hp_z{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 10
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    # metadata is in the UK catalog
+  um_SAmer_km4p4_RAL3P3_n1280_CoMA9_nest_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/SAmer_km4p4_RAL3P3.n1280_CoMA9/um.{{ time }}.hp_z{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 10
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    # metadata is in the UK catalog
+  um_SEA_km4p4_RAL3P3_n1280_CoMA9_nest_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/SEA_km4p4_RAL3P3.n1280_CoMA9/um.{{ time }}.hp_z{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 10
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    # metadata is in the UK catalog
+  um_CTC_km4p4_RAL3P3_n1280_CoMA9_nest_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/CTC_km4p4_RAL3P3.n1280_CoMA9/um.{{ time }}.hp_z{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 10
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    # metadata is in the UK catalog
+  um_Africa_km4p4_CoMA9_TBv1_n2560_CoMA9_hier_v2_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/Africa_km4p4_CoMA9_TBv1.n2560_CoMA9_hier_v2/um.{{ time }}.hp_z{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 10
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    # metadata is in the UK catalog
+  um_SAmer_km4p4_CoMA9_TBv1_n2560_CoMA9_hier_v2_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/SAmer_km4p4_CoMA9_TBv1.n2560_CoMA9_hier_v2/um.{{ time }}.hp_z{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 10
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    # metadata is in the UK catalog
+  um_SEA_km4p4_CoMA9_TBv1_n2560_CoMA9_hier_v2_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/SEA_km4p4_CoMA9_TBv1.n2560_CoMA9_hier_v2/um.{{ time }}.hp_z{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 10
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    # metadata is in the UK catalog
+  um_CTC_km4p4_CoMA9_TBv1_n2560_CoMA9_hier_v2_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - https://hackathon-o.s3-ext.jc.rl.ac.uk/sim-data/prod/v7/CTC_km4p4_CoMA9_TBv1.n2560_CoMA9_hier_v2/um.{{ time }}.hp_z{{ zoom }}.zarr
     driver: zarr
     parameters:
       time:
