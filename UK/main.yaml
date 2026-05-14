@@ -716,10 +716,10 @@ sources:
       resolution: 4.4km
       configuration: RAL3p3
       source_id:  UM-4.4km-RAL3-Africa
-      simulation_id: 10km-CoMA9-nest
+      simulation_id: 5km-CoMA9-nest
       time_start: 2020-01-20T00:00:00
       time_end: 2021-03-01T00:00
-      title: 4.4km resolution RAL3 Africa LAM nested in 10km CoMA9 global driving model
+      title: 4.4km resolution RAL3 Africa LAM nested in 5km CoMA9 global driving model
       summary: |
         Atmosphere-only RAL3 simulation of the Africa LAM at 4.4 km resolution. Run for 1 year and 2 months starting in 2020.
 
@@ -778,10 +778,10 @@ sources:
       resolution: 4.4km
       configuration: RAL3p3
       source_id:  UM-4.4km-RAL3-SAmer
-      simulation_id: 10km-CoMA9-nest
+      simulation_id: 5km-CoMA9-nest
       time_start: 2020-01-20T00:00:00
       time_end: 2021-03-01T00:00
-      title: 4.4km resolution RAL3 South America LAM nested in 10km CoMA9 global driving model
+      title: 4.4km resolution RAL3 South America LAM nested in 5km CoMA9 global driving model
       summary: |
         Atmosphere-only RAL3 simulation of the South America LAM at 4.4 km resolution. Run for 1 year and 2 months starting in 2020.
 
@@ -840,10 +840,10 @@ sources:
       resolution: 4.4km
       configuration: RAL3p3
       source_id:  UM-4.4km-RAL3-SEA
-      simulation_id: 10km-CoMA9-nest
+      simulation_id: 5km-CoMA9-nest
       time_start: 2020-01-20T00:00:00
       time_end: 2021-03-01T00:00
-      title: 4.4km resolution RAL3 South East Asia LAM nested in 10km CoMA9 global driving model
+      title: 4.4km resolution RAL3 South East Asia LAM nested in 5km CoMA9 global driving model
       summary: |
         Atmosphere-only RAL3 simulation of the South East Asia (SEA) LAM at 4.4 km resolution. Run for 1 year and 2 months starting in 2020.
 
@@ -902,10 +902,10 @@ sources:
       resolution: 4.4km
       configuration: RAL3p3
       source_id:  UM-4.4km-RAL3-CTC
-      simulation_id: 10km-CoMA9-nest
+      simulation_id: 5km-CoMA9-nest
       time_start: 2020-01-20T00:00:00
       time_end: 2021-03-01T00:00
-      title: 4.4km resolution RAL3 Cyclic Tropical Channel LAM nested in 10km CoMA9 global driving model
+      title: 4.4km resolution RAL3 Cyclic Tropical Channel LAM nested in 5km CoMA9 global driving model
       summary: |
         Atmosphere-only RAL3 simulation of the Cyclic Tropical Channel (CTC) LAM at 4.4 km resolution. Run for 1 year and 2 months starting in 2020.
 
