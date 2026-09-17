@@ -608,7 +608,7 @@ sources:
           * Vertical grid: L85_80km - 85 levels, model top at 80km
           * Initial conditions: From operational model for date 2020-01-20T00:00:00Z
 
-      references: https://doi.org/10.5194/gmd-2024-201
+      references: https://doi.org/10.1002/qj.4781
       license:  Crown Copyright, 2026, Met Office. For Educational Use and Non-Commercial Research Use only.
       creator_name: Richard W. Jones, Claudio Sanchez, Huw Lewis, Calum Scullion, Dasha Shchepanovska, Mark Muetzelfeldt
       creator_email: richard.w.jones@metoffice.gov.uk, claudio.sanchez@metoffice.gov.uk, huw.lewis@metoffice.gov.uk, calum.scullion@metoffice.gov.uk, dasha.shchepanovska@metoffice.gov.uk, mark.muetzelfeldt@reading.ac.uk
