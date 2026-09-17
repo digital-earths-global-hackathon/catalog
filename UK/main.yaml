@@ -616,6 +616,66 @@ sources:
       institution: Met Office
       conventions: CF-1.13
 
+  um_glm_n2560_CoMA9_p4k_hk26:
+    args:
+      chunks: null
+      consolidated: true
+      urlpath:
+        - http://hackathon-o.s3.jc.rl.ac.uk/sim-data/prod/v7/glm.n2560_CoMA9_p4k/um.{{ time }}.hp_z{{ zoom }}.zarr
+    driver: zarr
+    parameters:
+      time:
+        allowed:
+          - PT1H
+          - PT3H
+        default: PT1H
+        description: time resolution of the dataset
+        type: str
+      zoom:
+        allowed:
+          - 10
+          - 9
+          - 8
+          - 7
+          - 6
+          - 5
+          - 4
+          - 3
+          - 2
+          - 1
+          - 0
+        default: 8
+        description: zoom resolution of the dataset
+        type: int
+    metadata:
+      project: global_hackathon
+      experiment_id: hackathon
+      grid_mapping: healpix
+      region: global
+      resolution: 5km
+      configuration: CoMA9
+      source_id: UM-5km-CoMA9-global-p4K
+      simulation_id: 5km-CoMA9-p4K
+      time_start: 2020-01-20T00:00:00
+      time_end: 2021-02-28T23:00
+      title: CoMA9 5 km simulation +4K
+      summary: |
+        Atmosphere-only simulation at 5 km resolution. Run for 1 year and 2 months starting in 2020. SST +4K relative to um_glm_n2560_CoMA9_hk26.
+
+        **Simulation**:
+          * Source code: Regional Nesting Suite (RNS)
+          * Horizontal grid: 5km resolution global lat-lon grid
+          * Vertical grid: L85_80km - 85 levels, model top at 80km
+          * Initial conditions: From operational model for date 2020-01-20T00:00:00Z
+
+      references: https://doi.org/10.1002/qj.4781
+      license:  Crown Copyright, 2026, Met Office. For Educational Use and Non-Commercial Research Use only.
+      creator_name: Richard W. Jones, Claudio Sanchez, Huw Lewis, Calum Scullion, Dasha Shchepanovska, Mark Muetzelfeldt
+      creator_email: richard.w.jones@metoffice.gov.uk, claudio.sanchez@metoffice.gov.uk, huw.lewis@metoffice.gov.uk, calum.scullion@metoffice.gov.uk, dasha.shchepanovska@metoffice.gov.uk, mark.muetzelfeldt@reading.ac.uk
+      history: Calum Scullion ran this simulation on Atos (ECMWF), Mark Muetzelfeldt converted from UM lat/lon output to healpix (JASMIN) with remake
+      institution: Met Office
+      conventions: CF-1.13
+
   um_glm_n1280_GAL9_v2_hk26:
     args:
       chunks: null
